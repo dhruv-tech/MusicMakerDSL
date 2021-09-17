@@ -22,7 +22,7 @@ Music Maker - Ability to generate a basic musical tune based on a specification.
 
 <ul>
   
-  <li>Deliberate and design a structire for the DSL</li>
+  <li>Deliberate and design a structure for the DSL</li>
   <li>Research and finalize technical implenation details for interpreting the DSL (use of frameworks, method of input for the DSL, etc.)</li>
   <li>Division of responsibilities</li>
   <li>Identify potential users to document user stories</li>
