@@ -29,4 +29,14 @@ Music Maker - Ability to generate a basic musical tune based on a specification.
   
 </ul>
 
+## Key TA Thoughts
+
+<ul>
+
+  <li>Having a GUI is good, but do not focus on that.</li>
+  <li>It’s better to elaborate on the loop feature, essentially, we want your language able to help users do something creative. So loop should not just be simply duplicating sound tracks.</li>
+  <li>Being able to create sounds also sounds good, and seems more doable than importing soundbyte (not familiar with music, is that some music format or just a word you guys come up with?)  Defining sounds is a more interesting feature on your DSL, so I personally prefer the ability to create sounds.</li>
+
+</ul>
+
 ..
