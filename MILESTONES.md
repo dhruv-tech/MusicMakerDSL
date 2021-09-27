@@ -39,4 +39,102 @@ Music Maker - Ability to generate a basic musical tune based on a specification.
 
 </ul>
 
+# Milestone 2
+
+## Roadmap
+
+<ul>
+  <li>Demo Server + CI/CD Setup (By Sunday Sep. 26th)</li>
+  <li>Grammar finalized & Documentation for user (By the end of Monday Sep. 27th)</li>
+  <li>1-2 User Feedback (language prototype) (by the end of Thursday Sep. 30th)</li>
+  <li>Core functionality without link to DSL finished (by Tuesday Oct. 5th)</li>
+  <li>Web Page with editor and documentation (by Thursday Oct. 7th)</li>
+  <li>Parsing (by Tuesday Oct. 12th)</li>
+  <li>User Testing (final product) (by Thursday Oct. 14th)</li>
+  <li>3min Video (final product) (by Sunday Oct. 17th)</li>
+</ul>
+
+## Responsibilities
+
+<ul>
+  <li>EVERYONE:</li>
+    <ul>
+      <li>Meet up in person every monday (2pm-5pm), online thursday (7:30pm)</li>
+      <li>Grammar/syntax design</li>
+      <li>Parser, Backend Programming</li>
+    </ul>
+  <li>DAVID: User feedback/testing, Milestone writeup/submission</li>
+  <li>DHRUV: Web Page, Demo Server + CI/CD Setup</li>
+  <li>HOWARD: Video production, documentation, User Testing</li>
+  <li>MICHELLE: Web, user feedback/testing</li>
+
+</ul>
+
+## Draft Syntax
+
+~~~
+“Sound” TEXT “as” TYPE:
+  “Pattern:” PATTERN_RULE
+  “Use Sound:” SOUND_RULE
+  “Volume:” VOLUME_RULE
+“Finish sound”
+~~~
+
+<p>TYPE: “Preset” | “Clip”</p>
+
+<p>TEXT: ^[a-zA-Z]*$</p>
+
+<p>PATTERN_RULE: “repeat pattern” PATTERN_DEF NUM “times”</p>
+
+<p>PATTERN_DEF: [x_R\-]+</p>
+
+<p>NUM: [0-9]+</p>
+
+<p>SOUND_RULE: -TODO- </p>
+
+<p>VOLUME_RULE: ^[1-9]?[0-9]{1}$|^100$</p>
+
+<br>
+
+### Example Code:
+
+~~~
+Sound Kick1 as Preset:
+	RepeatPattern “x-xx-x” 10 Times
+	UseSound: “Kick”
+  Volume: 10
+Finish Sound
+
+Sound Melody1 as Clip:
+	RepeatPattern: 'x' 16 Times,
+  UseSound “CM Dm FM”
+  Volume: 15
+Finish Sound
+
+
+Combination ‘Draft1’:
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+  EndTrack
+  Track
+	  MaxLength: 35
+	  Offset: 10
+	  Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+  EndTrack
+
+Play Draft1
+~~~
+
+## Summary of Current Progress
+
+<ul>
+  <li>Outlined the goal of our DSL and who our users would be</li>
+  <li>Assigned responsibilities, and set an in person meeting time and location for working on code</li>
+  <li>Decided on language to write in, frameworks to use, form of final product</li>
+  <li>Near final draft of the syntax of our language</li>
+</ul>
+
 ..
