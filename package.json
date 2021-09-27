@@ -1,0 +1,18 @@
+{
+  "name": "project1group24",
+  "version": "1.0.0",
+  "description": "\"project for CPSC 410\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.students.cs.ubc.ca:cpsc410-2021w-t1/Project1Group24.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "antlr4": "^4.9.2"
+  }
+}
