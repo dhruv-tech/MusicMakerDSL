@@ -185,4 +185,10 @@ Play Draft1
   <li>Tried to play sound directly ex: “Play sound1” instead of putting into a combination, unsure if we wanted to allow this.</li>
 </ul>
 
+<p>**User 2:**</p>
+<ul>
+  <li>The language looked good and was easy to use. The user found the syntax to be easier than using Scribbletune with JS.</li>
+  <li>The user suggested to not include the tab/indentation as a required part of the syntax, as it was easier to not keep track of the level of indentation when writing trying to write sample DSL.</li>
+</ul>
+
 ..
