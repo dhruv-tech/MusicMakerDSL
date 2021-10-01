@@ -137,4 +137,52 @@ Play Draft1
   <li>Near final draft of the syntax of our language</li>
 </ul>
 
+# Milestone 3
+
+## Code Example Used For First User Testing
+
+~~~
+Sound Kick1 as Preset:
+	RepeatPattern “x-xx-x” 10 Times
+	UseSound: “Kick”
+	Volume: 10
+Finish Sound
+
+Sound Melody1 as Clip:
+	RepeatPattern: 'x' 16 Times
+	UseSound “CM Dm FM”
+	Volume: 15
+Finish Sound
+
+
+Combination ‘Draft1’:
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+
+Play Draft1
+~~~
+
+<p>Only slight clarifications on syntax made</p>
+
+## First Round of User Testing
+
+<p>**User 1:** Using this language, create a single chord that consists of the D Major (DM) and E Minor (Em) keys, and repeats three times. Play the sound at the end.</p>
+
+<ul>
+  <li>User was confused about multiple ways of repeating a pattern, asking if they should repeat within the “Sound” or within the “Track”</li>
+  <li>Assumed that the units used were in seconds, and that a MaxLength of 20 meant the track was 20 seconds long with the sounds stretched to fit that.</li>
+  <li>When told MaxLength field was the number of repetitions, was still unclear. Again does this include the repeats within the “Sound” as well as in “Track”?</li>
+  <li>Within Components, unsure if 2 sounds would play consecutively or together.</li>
+  <li>Tried to play sound directly ex: “Play sound1” instead of putting into a combination, unsure if we wanted to allow this.</li>
+</ul>
+
 ..
