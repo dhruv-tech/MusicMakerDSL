@@ -189,6 +189,7 @@ Play Draft1
 <ul>
   <li>The language looked good and was easy to use. The user found the syntax to be easier than using Scribbletune with JS.</li>
   <li>The user suggested to not include the tab/indentation as a required part of the syntax, as it was easier to not keep track of the level of indentation when writing trying to write sample DSL.</li>
+  <li>Some terminology was not intuitive for users who have never used Scribbletune or not familiar with music-making apps, so it would be helpful if the documentation of the final product contains some explanation to what those terms mean (e.g. preset, clip, what does the x & - mean in pattern)</li>
 </ul>
 
 ..
