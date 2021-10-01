@@ -138,4 +138,59 @@ Play Draft1
   <li>Near final draft of the syntax of our language</li>
 </ul>
 
+# Milestone 3
+
+## Code Example Used For First User Testing
+
+~~~
+Sound Kick1 as Preset:
+	RepeatPattern “x-xx-x” 10 Times
+	UseSound: “Kick”
+	Volume: 10
+Finish Sound
+
+Sound Melody1 as Clip:
+	RepeatPattern: 'x' 16 Times
+	UseSound “CM Dm FM”
+	Volume: 15
+Finish Sound
+
+
+Combination ‘Draft1’:
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+
+Play Draft1
+~~~
+
+<p><strong>Changes:</strong> Only slight clarifications on syntax made</p>
+
+## First Round of User Testing
+
+<p><strong>User 1:</strong> Using this language, create a single chord that consists of the D Major (DM) and E Minor (Em) keys, and repeats three times. Play the sound at the end.</p>
+
+<ul>
+  <li>User was confused about multiple ways of repeating a pattern, asking if they should repeat within the “Sound” or within the “Track”</li>
+  <li>Assumed that the units used were in seconds, and that a MaxLength of 20 meant the track was 20 seconds long with the sounds stretched to fit that.</li>
+  <li>When told MaxLength field was the number of repetitions, was still unclear. Again does this include the repeats within the “Sound” as well as in “Track”?</li>
+  <li>Within Components, unsure if 2 sounds would play consecutively or together.</li>
+  <li>Tried to play sound directly ex: “Play sound1” instead of putting into a combination, unsure if we wanted to allow this.</li>
+</ul>
+
+<p><strong>User 2:</strong></p>
+<ul>
+  <li>The language looked good and was easy to use. The user found the syntax to be easier than using Scribbletune with JS.</li>
+  <li>The user suggested to not include the tab/indentation as a required part of the syntax, as it was easier to not keep track of the level of indentation when writing trying to write sample DSL.</li>
+  <li>Some terminology was not intuitive for users who have never used Scribbletune or not familiar with music-making apps, so it would be helpful if the documentation of the final product contains some explanation to what those terms mean (e.g. preset, clip, what does the x & - mean in pattern)</li>
+</ul>
+
 ..
