@@ -192,4 +192,38 @@ Play Draft1
   <li>Some terminology was not intuitive for users who have never used Scribbletune or not familiar with music-making apps, so it would be helpful if the documentation of the final product contains some explanation to what those terms mean (e.g. preset, clip, what does the x & - mean in pattern)</li>
 </ul>
 
+## Current DSL Example
+
+~~~
+Sound Kick1 as Preset
+	Pattern: x-xx-x
+  Repeat: 10
+	UseSound: "Kick"
+	Volume: 10
+EndSound
+
+Sound Melody1 as Clip
+	Pattern: x
+  Repeat: 5
+	UseSound: “CM Dm FM”
+	Volume: 15
+EndSound
+
+
+Combination Draft1
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+
+Play Draft1
+~~~
+
 ..
