@@ -192,6 +192,46 @@ Play Draft1
   <li>Some terminology was not intuitive for users who have never used Scribbletune or not familiar with music-making apps, so it would be helpful if the documentation of the final product contains some explanation to what those terms mean (e.g. preset, clip, what does the x & - mean in pattern)</li>
 </ul>
 
+# Milestone 4
+
+## Status of Implementation
+
+<p>As of Monday, October 4.</p>
+
+### Complete
+<ul>
+<li>Set up programming environment</li>
+<li>Set up hosting/deployment</li>
+<li>Complete Lexer</li>
+<li>Complete Parser</li>
+</ul>
+
+### In Progress
+<ul>Front end UI</ul>
+
+### Incomplete
+<ul>
+<li>Complete AST</li>
+<li>Complete Static Checks</li>
+<li>Complete Evaluation Stage</li>
+<li>Error checking/messages</li>
+</ul>
+
+## User Study Plans
+
+## Roadmap for the Upcoming Days
+
+<ul>
+<li>Complete AST + Static Checks (by Friday, October 8)</li>
+<li>Complete Front-end UI (by Sunday, October 10)
+<li>Complete Evaluate stage (by Wednesday, October 13)</li>
+<li>User Study (by Friday, October 13)</li>
+<li></li>
+</ul>
+
+<p>As seen on our jira project</p>
+![Jira Screenshot](http://prntscr.com/1utcpkj)
+
 ## Current DSL Example
 
 ~~~
