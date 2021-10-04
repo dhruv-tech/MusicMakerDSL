@@ -219,6 +219,35 @@ Play Draft1
 
 ## User Study Plans
 
+<ol>
+<li>Get User that’s not the same user in UserStudy #1</li>
+<li>Have a Minimal Viable Product (MVP) for our users</li>
+<li>Have a documentation page including the example code ready for the user</li>
+<li>Ask them to try read the documentation page</li>
+<ol>
+<li>If user confused, explain, then note the confusion</li>
+<li>If not, we should ask if here’s any ambiguity in the documentation for our DSL</li>
+</ol>
+<li>Ask them to produce a specified short sequence of music with our DSL
+</li>
+<ol>
+<li>Note every time they got confused when implementing the task
+</li>
+<li>If they got stuck somewhere, help them, but write down where they were stuck
+</li>
+<li>What errors did they encounter
+</li>
+</ol>
+<li>Ask them to create whatever they like with the language
+</li>
+<ol>
+<li>If a user has suggestions, document their suggestions.</li>
+<li> if no suggestions, we ask them what can be improved</li>
+</ol>
+<li>Reflect on the informations collected, use them to improve our DSL
+</li>
+</ol>
+
 ## Roadmap for the Upcoming Days
 
 <ul>
