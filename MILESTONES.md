@@ -230,7 +230,7 @@ Play Draft1
 </ul>
 
 <p>As seen on our jira project</p>
-![Jira Screenshot](http://prntscr.com/1utcpkj)
+<a href="https://ibb.co/QkyCHx2"><img src="https://i.ibb.co/7QsRp0w/Screenshot-1.jpg" alt="Screenshot-1" border="0"></a>
 
 ## Current DSL Example
 
