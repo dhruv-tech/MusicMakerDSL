@@ -223,7 +223,7 @@ Play Draft1
 
 <ul>
 <li>Complete AST + Static Checks (by Friday, October 8)</li>
-<li>Complete Front-end UI (by Sunday, October 10)
+<li>Complete Front-end UI (by Monday, October 11)
 <li>Complete Evaluate stage (by Wednesday, October 13)</li>
 <li>User Study (by Friday, October 13)</li>
 <li></li>
