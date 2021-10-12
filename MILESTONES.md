@@ -193,4 +193,107 @@ Play Draft1
   <li>Some terminology was not intuitive for users who have never used Scribbletune or not familiar with music-making apps, so it would be helpful if the documentation of the final product contains some explanation to what those terms mean (e.g. preset, clip, what does the x & - mean in pattern)</li>
 </ul>
 
+# Milestone 4
+
+## Status of Implementation
+
+<p>As of Monday, October 4.</p>
+
+### Complete
+<ul>
+<li>Set up programming environment</li>
+<li>Set up hosting/deployment</li>
+<li>Complete Lexer</li>
+<li>Complete Parser</li>
+</ul>
+
+### In Progress
+<ul>Front end UI</ul>
+
+### Incomplete
+<ul>
+<li>Complete AST</li>
+<li>Complete Static Checks</li>
+<li>Complete Evaluation Stage</li>
+<li>Error checking/messages</li>
+</ul>
+
+## User Study Plans
+
+<ol>
+<li>Get User that’s not the same user in UserStudy #1</li>
+<li>Have a Minimal Viable Product (MVP) for our users</li>
+<li>Have a documentation page including the example code ready for the user</li>
+<li>Ask them to try read the documentation page</li>
+<ol>
+<li>If user confused, explain, then note the confusion</li>
+<li>If not, we should ask if here’s any ambiguity in the documentation for our DSL</li>
+</ol>
+<li>Ask them to produce a specified short sequence of music with our DSL
+</li>
+<ol>
+<li>Note every time they got confused when implementing the task
+</li>
+<li>If they got stuck somewhere, help them, but write down where they were stuck
+</li>
+<li>What errors did they encounter
+</li>
+</ol>
+<li>Ask them to create whatever they like with the language
+</li>
+<ol>
+<li>If a user has suggestions, document their suggestions.</li>
+<li> if no suggestions, we ask them what can be improved</li>
+</ol>
+<li>Reflect on the informations collected, use them to improve our DSL
+</li>
+</ol>
+
+## Roadmap for the Upcoming Days
+
+<ul>
+<li>Complete AST + Static Checks (by Friday, October 8)</li>
+<li>Complete Front-end UI (by Monday, October 11)
+<li>Complete Evaluate stage (by Wednesday, October 13)</li>
+<li>User Study (by Friday, October 13)</li>
+<li></li>
+</ul>
+
+<p>As seen on our jira project</p>
+<a href="https://ibb.co/QkyCHx2"><img src="https://i.ibb.co/7QsRp0w/Screenshot-1.jpg" alt="Screenshot-1" border="0"></a>
+
+## Current DSL Example
+
+~~~
+Sound Kick1 as Preset
+	Pattern: x-xx-x
+  Repeat: 10
+	UseSound: "Kick"
+	Volume: 10
+EndSound
+
+Sound Melody1 as Clip
+	Pattern: x
+  Repeat: 5
+	UseSound: “CM Dm FM”
+	Volume: 15
+EndSound
+
+
+Combination Draft1
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+
+Play Draft1
+~~~
+
 ..
