@@ -18,4 +18,4 @@ const build = (opts={}) => {
     return app;
 }
 
-module.exports = build;
+export default build;
