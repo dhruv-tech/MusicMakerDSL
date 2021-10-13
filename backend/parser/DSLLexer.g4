@@ -7,8 +7,8 @@ SOUND_END: 'EndSound';
 
 COMBINATION_START : 'Combination' WS+ -> mode(TEXT_MODE);
 
-TRACK_START: 'Track' WS+;
-TRACK_END: 'EndTrack' WS+;
+TRACK_START: 'Track';
+TRACK_END: 'EndTrack';
 
 PLAY: 'Play' WS+ -> mode(TEXT_MODE);
 
