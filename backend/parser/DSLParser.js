@@ -1,7 +1,7 @@
 // Generated from DSLParser.g4 by ANTLR 4.9.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
-import DSLParserListener from './DSLParserListener.js';
+import DSLParserListener from '../DSLParserListener.js';
 import DSLParserVisitor from './DSLParserVisitor.js';
 
 
