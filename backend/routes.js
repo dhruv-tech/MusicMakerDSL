@@ -1,4 +1,4 @@
-const musicMakerController = require('./controllers/musicMakerController');
+import musicMakerController from './controllers/musicMakerController.js';
 
 const routes = [
 
