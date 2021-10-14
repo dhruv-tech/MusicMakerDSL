@@ -11,6 +11,10 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 	  return this.visitChildren(ctx);
 	}
 
+	// Visit a parse tree produced by DSLParser#play.
+	visitPlay(ctx) {
+		return { play: ctx.TEXT().getText() };
+	}
 
 	// Visit a parse tree produced by DSLParser#sound.
 	visitSound(ctx) {
@@ -28,19 +32,33 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 			Object.assign(sound, option);
 		});
 
-	  return sound;
+	  	return sound;
 	}
 
 
 	// Visit a parse tree produced by DSLParser#combination.
 	visitCombination(ctx) {
-	  return this.visitChildren(ctx);
+
+		let combination = {
+			type: 'combination',
+			name: ctx.TEXT().getText(),
+			tracks: this.visitChildren(ctx).filter(function(x) {return x !== undefined})
+		};
+
+	  	return combination;
 	}
 
 
 	// Visit a parse tree produced by DSLParser#track.
 	visitTrack(ctx) {
-	  return this.visitChildren(ctx);
+		
+		let track = {}
+		let optionList = this.visitChildren(ctx);
+		optionList.forEach(option => {
+			Object.assign(track, option);
+		});
+
+	  	return this.visitChildren(ctx);
 	}
 
 
@@ -58,7 +76,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#usesound.
 	visitUsesound(ctx) {
-	  return { usesound: ctx.TEXT().getText().replace(/['"]+/g, '') }; // Regex to remove quotes
+	  return { usesound: ctx.USESOUNDS().getText() };
 	}
 
 
@@ -70,13 +88,13 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#maxlength.
 	visitMaxlength(ctx) {
-	  return this.visitChildren(ctx);
+	  return { maxLength: parseInt(ctx.NUM().getText()) };
 	}
 
 
 	// Visit a parse tree produced by DSLParser#offset.
 	visitOffset(ctx) {
-	  return this.visitChildren(ctx);
+	  return { offset: parseInt(ctx.NUM().getText()) };
 	}
 
 
@@ -88,9 +106,15 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#component.
 	visitComponent(ctx) {
+		let repeat;
+		if (ctx.NUM() != null) {
+			repeat = parseInt(ctx.NUM().getText());
+		} else {
+			repeat = 1;
+		}
 		let component = {
 			name: ctx.COMPONENT_NAME().getText(),
-			repeat: ctx.COMPONENT_REPEAT().getText()
+			repeat: repeat
 		}
 	  return component;
 	}

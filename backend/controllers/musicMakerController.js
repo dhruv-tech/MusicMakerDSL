@@ -22,9 +22,25 @@ EndSound
 Sound Melody1 as Clip
 	Pattern: x
     Repeat: 5
-	UseSound: “CM Dm FM”
+	UseSound: "CM Dm FM"
 	Volume: 15
-EndSound`;
+EndSound
+
+Combination Draft1
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+EndCombination
+
+Play Draft1`;
     let chars = new InputStream(input, true)
     let lexer = new Lexer(chars);
     let tokens  = new CommonTokenStream(lexer);
