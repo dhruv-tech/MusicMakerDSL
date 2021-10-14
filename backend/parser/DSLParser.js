@@ -1,7 +1,6 @@
 // Generated from DSLParser.g4 by ANTLR 4.9.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
-import DSLParserListener from './DSLParserListener.js';
 import DSLParserVisitor from './DSLParserVisitor.js';
 
 
@@ -642,18 +641,6 @@ class ProgramContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterProgram(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitProgram(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitProgram(this);
@@ -745,18 +732,6 @@ class SoundContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterSound(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitSound(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitSound(this);
@@ -802,18 +777,6 @@ class CombinationContext extends antlr4.ParserRuleContext {
 	        return this.getTypedRuleContext(TrackContext,i);
 	    }
 	};
-
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterCombination(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitCombination(this);
-		}
-	}
 
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
@@ -894,18 +857,6 @@ class TrackContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterTrack(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitTrack(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitTrack(this);
@@ -941,18 +892,6 @@ class PatternContext extends antlr4.ParserRuleContext {
 	    return this.getToken(DSLParser.TEXT, 0);
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterPattern(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitPattern(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitPattern(this);
@@ -987,18 +926,6 @@ class RepeatContext extends antlr4.ParserRuleContext {
 	NUM() {
 	    return this.getToken(DSLParser.NUM, 0);
 	};
-
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterRepeat(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitRepeat(this);
-		}
-	}
 
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
@@ -1047,18 +974,6 @@ class UsesoundContext extends antlr4.ParserRuleContext {
 	};
 
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterUsesound(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitUsesound(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitUsesound(this);
@@ -1093,18 +1008,6 @@ class VolumeContext extends antlr4.ParserRuleContext {
 	NUM() {
 	    return this.getToken(DSLParser.NUM, 0);
 	};
-
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterVolume(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitVolume(this);
-		}
-	}
 
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
@@ -1141,18 +1044,6 @@ class MaxlengthContext extends antlr4.ParserRuleContext {
 	    return this.getToken(DSLParser.NUM, 0);
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterMaxlength(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitMaxlength(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitMaxlength(this);
@@ -1187,18 +1078,6 @@ class OffsetContext extends antlr4.ParserRuleContext {
 	NUM() {
 	    return this.getToken(DSLParser.NUM, 0);
 	};
-
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterOffset(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitOffset(this);
-		}
-	}
 
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
@@ -1246,18 +1125,6 @@ class ComponentsContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterComponents(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitComponents(this);
-		}
-	}
-
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
 	        return visitor.visitComponents(this);
@@ -1300,18 +1167,6 @@ class ComponentContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
-
-	enterRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.enterComponent(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof DSLParserListener ) {
-	        listener.exitComponent(this);
-		}
-	}
 
 	accept(visitor) {
 	    if ( visitor instanceof DSLParserVisitor ) {
