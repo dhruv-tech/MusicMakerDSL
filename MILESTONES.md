@@ -291,6 +291,7 @@ Combination Draft1
 		Volume: 5
 		Components: [15*Kick1, 6*Melody1]
 	EndTrack
+EndCombination
 
 Play Draft1
 ~~~
