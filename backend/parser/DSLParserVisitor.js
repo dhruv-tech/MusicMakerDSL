@@ -58,7 +58,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 			Object.assign(track, option);
 		});
 
-	  	return this.visitChildren(ctx);
+	  	return track;
 	}
 
 
