@@ -1,8 +1,8 @@
 lexer grammar DSLLexer;
 
 SOUND_START : 'Sound' WS+ -> mode(TEXT_MODE);
-PRESET: 'as Preset';
-CLIP: 'as Clip';
+AS: 'as ';
+SUBTYPE: 'Preset' | 'Clip';
 SOUND_END: 'EndSound';
 
 COMBINATION_START : 'Combination' WS+ -> mode(TEXT_MODE);
@@ -15,7 +15,7 @@ PLAY: 'Play' WS+ -> mode(TEXT_MODE);
 //Options
 PATTERN_START: 'Pattern:' WS* -> mode(TEXT_MODE);
 REPEAT_START: 'Repeat:' WS*;
-USESOUND_START: 'UseSound:' WS* '"' -> mode(USESOUNDS_MODE);
+USESOUND_START: 'UseSound:' WS* -> mode(TEXT_MODE);
 VOLUME_START: 'Volume:' WS*;
 OFFSET_START: 'Offset:' WS*;
 MAXLENGTH_START: 'MaxLength:' WS*;
@@ -34,8 +34,3 @@ MULTIPLY: '*'-> channel(HIDDEN);
 COMPONENT_NAME: ~[[\]\r\n,* ]+;
 COMPONENTS_END: ']' -> mode(DEFAULT_MODE);
 COMMA: ',' WS* -> channel(HIDDEN);
-
-// Mode for tokenizing the special case UseSounds field
-mode USESOUNDS_MODE;
-USESOUNDS: ~[[\]\r\n"' ]+;
-USESOUNDS_END: '"' -> mode(DEFAULT_MODE);

@@ -14,7 +14,21 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#sound.
 	visitSound(ctx) {
-	  return this.visitChildren(ctx);
+
+		// Create a new sound object to return 
+		let sound = {
+			type: 'Sound',
+			subtype: ctx.SUBTYPE().getText(),
+			name: ctx.TEXT().getText()
+		};
+
+		// Add all sound options to object as key value pairs
+		let optionList = this.visitChildren(ctx);
+		optionList.forEach(option => {
+			Object.assign(sound, option);
+		});
+
+	  return sound;
 	}
 
 
@@ -32,25 +46,25 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#pattern.
 	visitPattern(ctx) {
-	  return this.visitChildren(ctx);
+	  return { pattern: ctx.TEXT().getText() };
 	}
 
 
 	// Visit a parse tree produced by DSLParser#repeat.
 	visitRepeat(ctx) {
-	  return this.visitChildren(ctx);
+	  return { repeat: parseInt(ctx.NUM().getText()) };
 	}
 
 
 	// Visit a parse tree produced by DSLParser#usesound.
 	visitUsesound(ctx) {
-	  return this.visitChildren(ctx);
+	  return { usesound: ctx.TEXT().getText().replace(/['"]+/g, '') }; // Regex to remove quotes
 	}
 
 
 	// Visit a parse tree produced by DSLParser#volume.
 	visitVolume(ctx) {
-	  return this.visitChildren(ctx);
+	  return { volume: parseInt(ctx.NUM().getText()) };
 	}
 
 
@@ -74,7 +88,11 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#component.
 	visitComponent(ctx) {
-	  return this.visitChildren(ctx);
+		let component = {
+			name: ctx.COMPONENT_NAME().getText(),
+			repeat: ctx.COMPONENT_REPEAT().getText()
+		}
+	  return component;
 	}
 
 

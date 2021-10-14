@@ -11,11 +11,19 @@ import Visitor from '../parser/DSLParserVisitor.js';
 
 contactController.helloWorld = async(req, res) => {
 
-    let input = `Sound Kick1 as Preset
+    let input = 
+`Sound Kick1 as Preset
 	Pattern: x-xx-x
-  Repeat: 10
+    Repeat: 10
 	UseSound: "Kick"
 	Volume: 10
+EndSound
+
+Sound Melody1 as Clip
+	Pattern: x
+    Repeat: 5
+	UseSound: “CM Dm FM”
+	Volume: 15
 EndSound`;
     let chars = new InputStream(input, true)
     let lexer = new Lexer(chars);
