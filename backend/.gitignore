@@ -17,7 +17,6 @@ dist/
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 ../.idea/
@@ -47,6 +46,7 @@ packages/
 *.flv
 *.mov
 *.wmv
+*.wav
 
 # Excel file
 #*.xlsx
