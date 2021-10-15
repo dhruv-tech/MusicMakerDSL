@@ -9,6 +9,7 @@ import Lexer from '../parser/DSLLexer.js';
 import Parser from '../parser/DSLParser.js';
 import Visitor from '../parser/DSLParserVisitor.js';
 import soundEngine from '../sound-engine/engine.js';
+import combination from '../sound-engine/combination.js';
 
 contactController.helloWorld = async(req, res) => {
 
@@ -31,31 +32,78 @@ contactController.helloWorld = async(req, res) => {
 //     let val = tree.accept(visitor);
 //     //console.log(val);
 
-    let testInput = [
-        {
-            type: 'Sound',
-            subtype: 'Preset',
-            name: 'Kick1',
-            pattern: 'x-xx-x',
-            repeat: 10,
-            usesound: 'kick',
-            volume: 10
-        },
-        {
-            type: 'Sound',
-            subtype: 'Preset',
-            name: 'Kick1',
-            pattern: 'x-xx-x',
-            repeat: 10,
-            usesound: 'kick',
-            volume: 10
-        },
-        {
-            error: `'x' is not specified`
-        }
+    // let testInput = [
+    //     {
+    //         type: 'Sound',
+    //         subtype: 'Preset',
+    //         name: 'Kick1',
+    //         pattern: 'x-xx-x',
+    //         repeat: 10,
+    //         usesound: 'kick',
+    //         volume: 10
+    //     },
+    //     {
+    //         type: 'Sound',
+    //         subtype: 'Preset',
+    //         name: 'Kick1',
+    //         pattern: 'x-xx-x',
+    //         repeat: 10,
+    //         usesound: 'kick',
+    //         volume: 10
+    //     },
+    //     {
+    //         error: `'x' is not specified`
+    //     }
+    // ]
+
+    let testCombination = {
+        type: 'combination',
+        name: 'Draft1',
+        tracks: [
+            {
+                maxLength: 50,
+                volume: 10,
+                components: [
+                    {
+                        repeat: 5,
+                        name: "Kick1"
+                    },
+                    {
+                        repeat: 5,
+                        name: "Melody1"
+                    }
+                ]
+            },
+            {
+                maxLength: 35,
+                offset: 10,
+                volume: 5,
+                components: [
+                    {
+                        repeat: 15,
+                        name: "Kick1"
+                    },
+                    {
+                        repeat: 6,
+                        name: "Melody1"
+                    }
+                ]
+            }
+        ]
+    }
+
+    let comArr = [
+      testCombination,
+      testCombination
     ]
 
-    soundEngine.build(testInput);
+    let soundMap = {
+        Kick1: "ammo_loop3",
+        Melody1: "g_sharp_minor_4_chord_progression"
+    }
+
+    // soundEngine.build(testInput);
+    combination.build(comArr, soundMap)
     res.code(200);
     res.send({msg: 'Up and running!'});
 
