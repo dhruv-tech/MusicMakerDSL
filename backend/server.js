@@ -2,7 +2,8 @@
     Server init file
 */
 
-const fastify = require('./app')({ logger: false });
+import app from './app.js';
+const fastify = app({ logger: false });
   
 const start = async() => {
 

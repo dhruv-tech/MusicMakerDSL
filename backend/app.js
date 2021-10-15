@@ -2,8 +2,8 @@
     Team 24, Music Maker DSL API
 */
 
-const fastify = require('fastify');
-const routes = require('./routes');
+import fastify from 'fastify';
+import routes from './routes.js';
 
 const build = (opts={}) => {
 
@@ -18,4 +18,4 @@ const build = (opts={}) => {
     return app;
 }
 
-module.exports = build;
+export default build;
