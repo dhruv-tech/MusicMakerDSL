@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "antlr4": "^4.9.2",
-    "crunker": "^1.2.1",
     "fastify": "^3.21.6"
   }
 }

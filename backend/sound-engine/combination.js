@@ -1,9 +1,9 @@
 // comb
 
-
-const combination = {}
+const combination = {};
 
 combination.build = (combObjArray, soundMap) => {
+
 
   for (let combObj of combObjArray) {
 
