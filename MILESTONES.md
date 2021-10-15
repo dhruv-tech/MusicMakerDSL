@@ -275,13 +275,11 @@ Play Draft1
 </ul>
 
 ### In Progress
-<ul>Front end UI</ul>
+<ul>
+<li>Front end UI</li>
 <li>Complete Static Checks</li>
 <li>Complete Evaluation Stage</li>
 <li>Error checking/messages</li>
-
-### Incomplete
-<ul>
 </ul>
 
 ## Status of Final User Study
