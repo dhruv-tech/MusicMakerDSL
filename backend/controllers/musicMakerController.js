@@ -97,8 +97,13 @@ contactController.helloWorld = async(req, res) => {
       testCombination
     ]
 
+    let soundMap = {
+        Kick1: "ammo_loop3",
+        Melody1: "g_sharp_minor_4_chord_progression"
+    }
+
     // soundEngine.build(testInput);
-    combination.build(comArr, [])
+    combination.build(comArr, soundMap)
     res.code(200);
     res.send({msg: 'Up and running!'});
 
