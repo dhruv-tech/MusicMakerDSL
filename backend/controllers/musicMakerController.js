@@ -41,18 +41,32 @@ Combination Draft1
 EndCombination
 
 Play Draft1`;
-    let chars = new InputStream(input, true)
-    let lexer = new Lexer(chars);
-    let tokens  = new CommonTokenStream(lexer);
-    let parser = new Parser(tokens);
 
-    parser.buildParseTrees = true;
+    let chars, lexer, tokens, parser, val, tree, visitor;
 
-    let tree = parser.program();
-    let visitor = new Visitor();
+    try {
+        // Tokenization and Parsing
+        chars = new InputStream(input, true);
+        lexer = new Lexer(chars);
+        tokens  = new CommonTokenStream(lexer);
+        parser = new Parser(tokens);
 
-    let val = tree.accept(visitor);
-    console.log(val);
+        parser.buildParseTrees = true;
+
+    } catch(e) {
+        console.log("Syntax Error: Invalid syntax");
+    }
+
+    try {
+        // ASTVisitor returns an array of objects to be used by sound engine
+        tree = parser.program();
+        visitor = new Visitor();
+        val = tree.accept(visitor);
+
+        console.log(val);
+    } catch(e) {
+        console.log("Syntax Error: Missing crucial values");
+    }
 
     res.code(200);
     res.send({msg: 'Up and running!'});

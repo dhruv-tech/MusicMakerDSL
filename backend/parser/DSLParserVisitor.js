@@ -32,6 +32,18 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 			Object.assign(sound, option);
 		});
 
+		// Set default values if not explicitely set
+		if (!("volume" in sound)) {
+			Object.assign(sound, { volume: 1 });
+		}
+		if (!("repeat" in sound)) {
+			Object.assign(sound, { repeat: 1 });
+		}
+
+		// Throw error if crucial values are not set
+		if (!("pattern" in sound) | !("usesound" in sound)) {
+			throw 'Error: Key sound value not defined';
+		}
 	  	return sound;
 	}
 
@@ -39,6 +51,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 	// Visit a parse tree produced by DSLParser#combination.
 	visitCombination(ctx) {
 
+		// Create combination object
 		let combination = {
 			type: 'combination',
 			name: ctx.TEXT().getText(),
@@ -52,11 +65,28 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 	// Visit a parse tree produced by DSLParser#track.
 	visitTrack(ctx) {
 		
+		// Create new track
 		let track = {}
 		let optionList = this.visitChildren(ctx);
 		optionList.forEach(option => {
 			Object.assign(track, option);
 		});
+
+		// Set default values if not explicitly set
+		if (!("volume" in track)) {
+			Object.assign(track, { volume: 1 });
+		}
+		if (!("maxLength" in track)) {
+			Object.assign(track, { maxLength: 100 });
+		}
+		if (!("offset" in track)) {
+			Object.assign(track, { offset: 0 });
+		}
+
+		// Throw error if no components are included
+		if (!("components" in track)) {
+			throw 'Error: Track invalid, no components included';
+		}
 
 	  	return track;
 	}
@@ -100,18 +130,23 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#components.
 	visitComponents(ctx) {
-	  return this.visitChildren(ctx);
+	  return { components: this.visitChildren(ctx) };
 	}
 
 
 	// Visit a parse tree produced by DSLParser#component.
 	visitComponent(ctx) {
+
+		// Handle component repetition if specified
 		let repeat;
 		if (ctx.NUM() != null) {
 			repeat = parseInt(ctx.NUM().getText());
 		} else {
+			// Repeat only once if unspecified
 			repeat = 1;
 		}
+
+		// Create component object
 		let component = {
 			name: ctx.COMPONENT_NAME().getText(),
 			repeat: repeat
