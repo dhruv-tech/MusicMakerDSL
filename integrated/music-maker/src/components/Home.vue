@@ -15,7 +15,7 @@
                 </button>
             </div>
             <div class="col gx-0 px-2 pt-1 top-round align-right">
-                <div id="history-btn" class="btn text-grey">
+                <div id="history-btn" class="btn text-grey" v-on:click="test()">
                     <b>
                         <i class="bi bi-arrow-counterclockwise"></i>
                         History
@@ -33,23 +33,14 @@
             </div>
         </div>
         <div id="footer" class="row gx-0 px-5">
-            © 2021 CPSC 410 Team 24. All Rights Reserved.
+            © 2021 CPSC 410 Team 24. All Rights Reserved. {{ msg }}
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import '../assets/styles.css'
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  import '../assets/styles.css';
+  import component from './Home.js';
+  export default component;
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
