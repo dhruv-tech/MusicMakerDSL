@@ -2,7 +2,6 @@
     Sound rendering system
 */
 
-import scribble from 'scribbletune/browser.js';
 import Crunker from 'crunker';
 
 // Sounds
@@ -58,7 +57,7 @@ const generateFromPreset = (soundSpec) => {
         let arrayBuffer = await rawData.arrayBuffer();
         let decodedAudio = await context.decodeAudioData(arrayBuffer);
 
-        let emptyAudio = context.createBuffer(2, decodedAudio.length, context.sampleRate);
+        let emptyAudio = context.createBuffer(2, 2000, context.sampleRate);
 
         // Manage Pattern
 
@@ -79,11 +78,11 @@ const generateFromPreset = (soundSpec) => {
         }
 
         // Manage Repeat
-
+        let temp = [];
         for (let i = 1; i < soundSpec.repeat; i++) {
-            crunkerManifest = crunkerManifest.concat(crunkerManifest);
+            temp = crunkerManifest.concat(crunkerManifest);
         }
-
+        crunkerManifest = (temp.length > 0) ? temp: crunkerManifest;
         // Output
 
         let output = await crunker.concatAudio(crunkerManifest);

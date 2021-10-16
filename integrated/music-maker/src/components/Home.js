@@ -14,18 +14,18 @@ export default {
                     type: 'Sound',
                     subtype: 'Preset',
                     name: 'Kick1',
-                    pattern: 'xx-xx-',
-                    repeat: 2,
+                    pattern: 'x-',
+                    repeat: 1,
                     usesound: 'Kick',
                     volume: 10
                 },
                 {
                     type: 'Sound',
-                    subtype: 'Clip',
-                    name: 'Kick2',
-                    pattern: '--x--x',
-                    repeat: 2,
-                    usesound: 'C0 C#2 D5',
+                    subtype: 'Preset',
+                    name: 'Bass1',
+                    pattern: 'x-',
+                    repeat: 1,
+                    usesound: 'Bass',
                     volume: 10
                 },
                 {
@@ -33,12 +33,17 @@ export default {
                     name: 'Draft1',
                     tracks: [
                         {
-                            maxLength: 50,
-                            volume: 10,
+                            maxLength: 25,
+                            offset: 2,
+                            volume: 100,
                             components: [
                                 {
-                                    repeat: 5,
+                                    repeat: 4,
                                     name: "Kick1"
+                                },
+                                {
+                                    repeat: 5,
+                                    name: "Bass1"
                                 }
                             ]
                         }
