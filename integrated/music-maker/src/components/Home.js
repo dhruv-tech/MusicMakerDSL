@@ -16,16 +16,16 @@ export default {
                     name: 'Kick1',
                     pattern: 'xx-xx-',
                     repeat: 2,
-                    usesound: 'kick',
+                    usesound: 'Kick',
                     volume: 10
                 },
                 {
                     type: 'Sound',
-                    subtype: 'Preset',
+                    subtype: 'Clip',
                     name: 'Kick1',
                     pattern: '--x--x',
                     repeat: 2,
-                    usesound: 'OpenHats',
+                    usesound: 'C0 C#2 D5',
                     volume: 10
                 }
             ]
