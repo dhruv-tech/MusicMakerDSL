@@ -16,14 +16,12 @@ contactController.helloWorld = async(req, res) => {
 	Pattern: x-xx-x
     Repeat: 10
 	UseSound: "Kick"
-	Volume: 10
 EndSound
 
 Sound Melody1 as Clip
 	Pattern: x
     Repeat: 5
 	UseSound: "CM Dm FM"
-	Volume: 15
 EndSound
 
 Combination Draft1

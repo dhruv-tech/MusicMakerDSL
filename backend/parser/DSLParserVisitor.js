@@ -33,9 +33,6 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 		});
 
 		// Set default values if not explicitely set
-		if (!("volume" in sound)) {
-			Object.assign(sound, { volume: 1 });
-		}
 		if (!("repeat" in sound)) {
 			Object.assign(sound, { repeat: 1 });
 		}
@@ -74,7 +71,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 		// Set default values if not explicitly set
 		if (!("volume" in track)) {
-			Object.assign(track, { volume: 1 });
+			Object.assign(track, { volume: 10 });
 		}
 		if (!("maxLength" in track)) {
 			Object.assign(track, { maxLength: 100 });
