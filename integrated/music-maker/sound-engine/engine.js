@@ -3,6 +3,7 @@
 */
 
 import soundBuilder from "./sound.js";
+import combinationPlayer from "./combination.js";
 const engine = {};
 
 engine.build = (specs) => {
@@ -24,13 +25,33 @@ engine.build = (specs) => {
             return block.type == 'Sound';
         });
 
-        let soundIds = [];
+        let audioData = new Map();
         for (let sound of sounds) {
-            let id = await soundBuilder.render(sound);
-            //soundIds.append(id);
+            try {
+                let data = await soundBuilder.render(sound);
+                audioData.set(sound.name, data);
+            } catch (error) {
+                reject(error);
+            }
+            
         }
 
         // Process Combination
+
+        let combination = specs.filter((block) => {
+            return block.type == 'Combination';
+        });
+
+        if (combination.length > 1) {
+            reject({error: `Only one combination block is allowed`});
+        }
+
+        try {
+            await combinationPlayer.render(combination[0], audioData);
+        } catch (error) {
+            reject(error);
+        }
+
     });
 
 }

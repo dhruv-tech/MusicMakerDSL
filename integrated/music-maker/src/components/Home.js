@@ -22,11 +22,27 @@ export default {
                 {
                     type: 'Sound',
                     subtype: 'Clip',
-                    name: 'Kick1',
+                    name: 'Kick2',
                     pattern: '--x--x',
                     repeat: 2,
                     usesound: 'C0 C#2 D5',
                     volume: 10
+                },
+                {
+                    type: 'Combination',
+                    name: 'Draft1',
+                    tracks: [
+                        {
+                            maxLength: 50,
+                            volume: 10,
+                            components: [
+                                {
+                                    repeat: 5,
+                                    name: "Kick1"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
 

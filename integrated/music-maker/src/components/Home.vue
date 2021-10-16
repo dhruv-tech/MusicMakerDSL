@@ -33,7 +33,7 @@
             </div>
         </div>
         <div id="footer" class="row gx-0 px-5">
-            © 2021 CPSC 410 Team 24. All Rights Reserved. {{ msg }}
+            © 2021 CPSC 410 Team 24. All Rights Reserved.
         </div>
       </div>
   </div>

@@ -21,17 +21,26 @@ const builder = {};
 
 builder.render = async(soundSpec) => {
 
-    return new Promise(async(resolve) => {
+    return new Promise(async(resolve, reject) => {
 
-        let file;
+        try {
 
-        if (soundSpec.subtype == 'Preset') {
-            let x = await generateFromPreset(soundSpec);
-            resolve('000');
-        } else if (soundSpec.subtype == 'Clip'){
-            let y = await generateFromClip(soundSpec);
-            resolve('000');
+            if (soundSpec.subtype == 'Preset') {
+                let data = await generateFromPreset(soundSpec);
+                resolve(data);
+            } else if (soundSpec.subtype == 'Clip'){
+                let data = await generateFromClip(soundSpec);
+                resolve(data);
+            } else {
+                reject({error: true, desc: `invalid sound type ${soundSpec.subtype}`})
+            }
+
+        } catch (error) {
+            reject(error);
+
         }
+
+        
 
     })
 }
@@ -84,7 +93,7 @@ const generateFromPreset = (soundSpec) => {
         // play.connect(context.destination);
         // play.start(context.currentTime + 0.25);
 
-        resolve({error: null, type: 'buffer', buffer: output});
+        resolve({error: false, type: 'buffer', buffer: output});
         
     })
 
@@ -109,14 +118,23 @@ const generateFromClip = (soundSpec) => {
 
             if (stp == -1) {
                 reject({error: true, desc: `Sequence of notes in sound block '${soundSpec.name}' is not valid`});
+                
+                break;
 
             } else {
 
                 notesSeq.push(freq);
-                resolve({error: null, type: 'sequence', sequence: notesSeq});
 
             }
         }
+
+        // Manage Repeat
+
+        for (let i = 1; i < soundSpec.repeat; i++) {
+            notesSeq = notesSeq.concat(notesSeq);
+        }
+
+        resolve({error: false, type: 'sequence', sequence: notesSeq});
     })
 
 
