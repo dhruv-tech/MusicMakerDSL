@@ -3,7 +3,7 @@
 */
 
 const player = {};
-
+import Crunker from 'crunker';
 player.render = async(combination, audioData) => {
 
     return new Promise(async(resolve, reject) => {
@@ -12,8 +12,8 @@ player.render = async(combination, audioData) => {
         console.log(combination)
         for (let track of combination.tracks) {
             
-            let offset = track.offset;
-            let volume = track.volume;
+            let offset = track.offset ? track.offset : 0;
+            let volume = track.volume/100;
             let limit = track.maxLength;
 
             for (let component of track.components) {
@@ -23,9 +23,25 @@ player.render = async(combination, audioData) => {
 
                     const context = new AudioContext();
                     const play = context.createBufferSource();
-                    play.buffer = audio.buffer;
-                    play.connect(context.destination);
-                    play.start(context.currentTime + 0.25);
+
+                    // Manage Repeat
+
+                    let repeat = (component.repeat < limit) ? component.repeat : limit;
+
+                    let crunker = new Crunker();
+                    let repeatedBufferSpec = [audio.buffer];
+                    for (let i = 1; i < repeat; i++) {
+                        repeatedBufferSpec.push(audio.buffer);
+                    }
+                    play.buffer = crunker.concatAudio(repeatedBufferSpec);
+
+
+                    let amplifier = context.createGain();
+
+                    play.connect(amplifier);
+                    amplifier.gain.setValueAtTime(volume, context.currentTime);
+                    amplifier.connect(context.destination);
+                    play.start(context.currentTime + offset);
                     resolve();
                 }
             }
