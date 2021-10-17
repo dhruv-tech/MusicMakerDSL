@@ -68,7 +68,7 @@ export default {
                     type: 'Sound',
                     subtype: 'Preset',
                     name: 'Kick1',
-                    pattern: 'x-',
+                    pattern: 'xx-x',
                     repeat: 1,
                     usesound: 'Kick',
                     volume: 10
@@ -83,21 +83,41 @@ export default {
                     volume: 10
                 },
                 {
+                    type: 'Sound',
+                    subtype: 'Clip',
+                    name: 'T1',
+                    pattern: 'x',
+                    repeat: 1,
+                    usesound: 'C1 C2 C3 D5',
+                    volume: 10
+                },
+                {
                     type: 'Combination',
                     name: 'Draft1',
                     tracks: [
                         {
                             maxLength: 25,
-                            offset: 2,
+                            offset: 2000,
                             volume: 100,
                             components: [
                                 {
-                                    repeat: 4,
-                                    name: "Kick1"
+                                    repeat: 1,
+                                    name: 'Kick1'
                                 },
                                 {
-                                    repeat: 5,
-                                    name: "Bass1"
+                                    repeat: 2,
+                                    name: "T1"
+                                }
+                            ]
+                        },
+                        {
+                            maxLength: 25,
+                            offset: 0,
+                            volume: 100,
+                            components: [
+                                {
+                                    repeat: 1,
+                                    name: 'Bass1'
                                 }
                             ]
                         }

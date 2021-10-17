@@ -57,8 +57,8 @@ const generateFromPreset = (soundSpec) => {
         let arrayBuffer = await rawData.arrayBuffer();
         let decodedAudio = await context.decodeAudioData(arrayBuffer);
 
-        let emptyAudio = context.createBuffer(2, 2000, context.sampleRate);
-
+        let emptyAudio = context.createBuffer(2, 21000, context.sampleRate);
+        
         // Manage Pattern
 
         let crunker = new Crunker();
@@ -78,11 +78,11 @@ const generateFromPreset = (soundSpec) => {
         }
 
         // Manage Repeat
-        let temp = [];
+        let temp = crunkerManifest;
         for (let i = 1; i < soundSpec.repeat; i++) {
-            temp = crunkerManifest.concat(crunkerManifest);
+            crunkerManifest = crunkerManifest.concat(temp);
         }
-        crunkerManifest = (temp.length > 0) ? temp: crunkerManifest;
+        
         // Output
 
         let output = await crunker.concatAudio(crunkerManifest);
