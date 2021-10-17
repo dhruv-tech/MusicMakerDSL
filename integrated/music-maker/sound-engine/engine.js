@@ -18,7 +18,7 @@ engine.build = (specs) => {
         for (let [spec, idx] of specs.entries()) {
 
             let firstKey = Object.keys(spec)[0];
-            if (firstKey == 'error') {
+            if (firstKey === 'error') {
                 reject({error: `Sound/Combination Block ${idx}: ${spec.error}`});
             }
         }
@@ -26,7 +26,7 @@ engine.build = (specs) => {
         // Process Sounds
 
         let sounds = specs.filter((block) => {
-            return block.type == 'Sound';
+            return block.type === 'Sound';
         });
 
         let audioData = new Map();
@@ -42,8 +42,12 @@ engine.build = (specs) => {
 
         // Process Combination
         let combination = specs.filter((block) => {
-            return block.type == 'Combination';
+            return block.type === 'combination';
+
         });
+
+
+
 
         if (combination.length > 1) {
             reject({error: `Only one combination block is allowed`});

@@ -23,7 +23,7 @@ player.render = async(combination, audioData, context, destination) => {
         event.on('trackFinished', () => {
             completedTracks++;
 
-            if (completedTracks == combination.tracks.length) {
+            if (completedTracks === combination.tracks.length) {
                 resolve();
             }
         });
@@ -53,12 +53,12 @@ const playComponents = async(components, context, offset, volume, audioData, des
 
 const playComponent = (audio, context, volume, repeat, destination) => {
     return new Promise(async(resolve, reject) => {
-        if (audio.type == 'buffer') {
+        if (audio.type === 'buffer') {
 
             await renderBuffer(audio.buffer, context, volume, repeat, destination);
             resolve();
 
-        } else if (audio.type == 'sequence') {
+        } else if (audio.type === 'sequence') {
 
             await renderNotes(audio.sequence, context, volume, repeat, destination);
             resolve();
