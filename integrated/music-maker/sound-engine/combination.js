@@ -2,10 +2,12 @@
     Module for sound execution; Processes the selected combination block.
 */
 
-const player = {};
 import Crunker from 'crunker';
+import EventEmitter from 'events';
+const player = {};
+const event = new EventEmitter();
 
-player.render = async(combination, audioData) => {
+player.render = async(combination, audioData, context, destination) => {
 
     return new Promise(async(resolve, reject) => {
 
@@ -13,10 +15,18 @@ player.render = async(combination, audioData) => {
             
             let offset = track.offset ? track.offset : 0;
             let volume = track.volume/100;
-            const context = new AudioContext();
             
-            playComponents(track.components, context, offset, volume, audioData);
+            playComponents(track.components, context, offset, volume, audioData, destination);
         }
+
+        let completedTracks = 0;
+        event.on('trackFinished', () => {
+            completedTracks++;
+
+            if (completedTracks == combination.tracks.length) {
+                resolve();
+            }
+        });
 
     })
 }
@@ -25,30 +35,32 @@ player.render = async(combination, audioData) => {
 
 /* Plays components sequencially*/
 
-const playComponents = async(components, context, offset, volume, audioData) => {
+const playComponents = async(components, context, offset, volume, audioData, destination) => {
 
     await delay(offset);
 
     for (let component of components) {
 
         let audio = audioData.get(component.name);
-        await playComponent(audio, context, volume, component.repeat);
+        await playComponent(audio, context, volume, component.repeat, destination);
     }
+
+    event.emit('trackFinished');
 
 }
 
 /* Plays a single component */
 
-const playComponent = (audio, context, volume, repeat) => {
+const playComponent = (audio, context, volume, repeat, destination) => {
     return new Promise(async(resolve, reject) => {
         if (audio.type == 'buffer') {
 
-            await renderBuffer(audio.buffer, context, volume, repeat);
+            await renderBuffer(audio.buffer, context, volume, repeat, destination);
             resolve();
 
         } else if (audio.type == 'sequence') {
 
-            await renderNotes(audio.sequence, context, volume, repeat);
+            await renderNotes(audio.sequence, context, volume, repeat, destination);
             resolve();
 
         }
@@ -57,7 +69,7 @@ const playComponent = (audio, context, volume, repeat) => {
 
 /* Renders a preset buffer component */
 
-const renderBuffer = (buffer, context, volume, repeat) => {
+const renderBuffer = (buffer, context, volume, repeat, destination) => {
 
     return new Promise((resolve, reject) => {
 
@@ -82,7 +94,7 @@ const renderBuffer = (buffer, context, volume, repeat) => {
 
         // Send sound to audio output devices
 
-        amplifier.connect(context.destination);
+        amplifier.connect(destination);
         play.start(context.currentTime);
         play.stop(context.currentTime + play.buffer.duration);
         
@@ -93,7 +105,7 @@ const renderBuffer = (buffer, context, volume, repeat) => {
 
 /* Renders a clip sequence component */
 
-const renderNotes = (seq, context, volume, repeat) => {
+const renderNotes = (seq, context, volume, repeat, destination) => {
     return new Promise(async(resolve, reject) => {
 
         // Manage Repeat
@@ -106,7 +118,7 @@ const renderNotes = (seq, context, volume, repeat) => {
         // Manage rendering for each individual note
 
         for (let freq of seq) {
-            await renderNote(freq, context, volume);
+            await renderNote(freq, context, volume, destination);
         }
         resolve();
     })
@@ -114,7 +126,7 @@ const renderNotes = (seq, context, volume, repeat) => {
 
 /* Renders a single note from a clip sequence component */
 
-const renderNote = (freq, context, volume) => {
+const renderNote = (freq, context, volume, destination) => {
 
     return new Promise((resolve) => {
 
@@ -131,7 +143,7 @@ const renderNote = (freq, context, volume) => {
 
         // Establish connection with audio output devices
 
-        amplifier.connect(context.destination);
+        amplifier.connect(destination);
 
         // Oscillate at frequency of current note for 0.47 seconds
 

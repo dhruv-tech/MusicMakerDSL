@@ -10,7 +10,8 @@ export default {
     },
     data: () => ({
         modal: null,
-        dslStr: ''
+        dslStr: '',
+        link: '#'
     }),
     methods:{
         async runDSL (e) {
@@ -31,7 +32,7 @@ export default {
             
             
         },
-        test: async() => {
+        async test() {
             let input = 
             `Sound Kick1 as Preset
                 Pattern: x-xx-x
@@ -70,8 +71,7 @@ export default {
                     name: 'Kick1',
                     pattern: 'x',
                     repeat: 1,
-                    usesound: 'Kick',
-                    volume: 10
+                    usesound: 'Kick'
                 },
                 {
                     type: 'Sound',
@@ -79,26 +79,23 @@ export default {
                     name: 'Bass1',
                     pattern: 'x-',
                     repeat: 1,
-                    usesound: 'Bass',
-                    volume: 10
+                    usesound: 'Bass'
                 },
                 {
                     type: 'Sound',
                     subtype: 'Clip',
                     name: 'T1',
                     pattern: 'x',
-                    repeat: 2,
-                    usesound: 'C1 C2 C3 D5',
-                    volume: 10
+                    repeat: 1,
+                    usesound: 'C1 C2 C3 D5'
                 },
                 {
                     type: 'Combination',
                     name: 'Draft1',
                     tracks: [
                         {
-                            maxLength: 25,
                             offset: 0,
-                            volume: 100,
+                            volume: 20,
                             components: [
                                 {
                                     repeat: 1,
@@ -110,7 +107,9 @@ export default {
                 }
             ]
 
-            soundEngine.build(testInput);
+            let uri = await soundEngine.build(testInput);
+            alert(uri);
+            this.link = uri;
         }
     },
     beforeMount(){

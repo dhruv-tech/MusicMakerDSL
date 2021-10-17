@@ -4,9 +4,13 @@
 
 import soundBuilder from "./sound.js";
 import combinationPlayer from "./combination.js";
+import Crunker from 'crunker';
 const engine = {};
 
+let recorder;
+
 engine.build = (specs) => {
+
     return new Promise(async(resolve, reject) => {
 
         // Validate
@@ -46,7 +50,13 @@ engine.build = (specs) => {
         }
 
         try {
-            await combinationPlayer.render(combination[0], audioData);
+            const context = new AudioContext();
+            const destination = context.createMediaStreamDestination();
+            recorder = new MediaRecorder(destination.stream);
+            recorder.start();
+            await combinationPlayer.render(combination[0], audioData, context, destination);
+            let recording = await getRecording();
+            resolve(recording);
         } catch (error) {
             reject(error);
         }
@@ -55,8 +65,24 @@ engine.build = (specs) => {
 
 }
 
-engine.test = () => {
-    alert('c');
+const getRecording = () => {
+    return new Promise(resolve => {
+        recorder.addEventListener('dataavailable', async(e) => {
+        
+            let arrayBuffer = await e.data.arrayBuffer();
+            let recording_context = new AudioContext();
+            let decodedAudio = await recording_context.decodeAudioData(arrayBuffer);
+    
+            let crunker = new Crunker();
+            let res = crunker.export(decodedAudio);
+            recorder = null;
+    
+            resolve(res.url);
+        });
+    
+        recorder.stop();
+    })
+    
 }
 
 export default engine;

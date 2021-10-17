@@ -133,8 +133,7 @@
                                     </div>
                                 </div>
                                 <div class="row gx-0">
-                                    <audio controls>
-                                        <source src="https://www.kozco.com/tech/LRMonoPhase4.wav">
+                                    <audio controls v-bind:src="link">
                                         <p>Your browser does not support the<code>audio</code> element.</p>
                                     </audio>
                                 </div>
