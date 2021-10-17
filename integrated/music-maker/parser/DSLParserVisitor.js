@@ -50,7 +50,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 		// Create combination object
 		let combination = {
-			type: 'Combination',
+			type: 'combination',
 			name: ctx.TEXT().getText(),
 			tracks: this.visitChildren(ctx).filter(function(x) {return x !== undefined})
 		};
@@ -72,9 +72,6 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 		// Set default values if not explicitly set
 		if (!("volume" in track)) {
 			Object.assign(track, { volume: 10 });
-		}
-		if (!("maxLength" in track)) {
-			Object.assign(track, { maxLength: 100 });
 		}
 		if (!("offset" in track)) {
 			Object.assign(track, { offset: 0 });
@@ -112,13 +109,6 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 	  return { volume: parseInt(ctx.NUM().getText()) };
 	}
 
-
-	// Visit a parse tree produced by DSLParser#maxlength.
-	visitMaxlength(ctx) {
-	  return { maxLength: parseInt(ctx.NUM().getText()) };
-	}
-
-
 	// Visit a parse tree produced by DSLParser#offset.
 	visitOffset(ctx) {
 	  return { offset: parseInt(ctx.NUM().getText()) };
@@ -127,7 +117,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by DSLParser#components.
 	visitComponents(ctx) {
-	  return { components: this.visitChildren(ctx) };
+	  return { components: this.visitChildren(ctx).filter(function(x) {return x !== undefined}) };
 	}
 
 
@@ -136,8 +126,8 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 		// Handle component repetition if specified
 		let repeat;
-		if (ctx.NUM() != null) {
-			repeat = parseInt(ctx.NUM().getText());
+		if (ctx.COMPONENT_REPEAT() != null) {
+			repeat = parseInt(ctx.COMPONENT_REPEAT().getText());
 		} else {
 			// Repeat only once if unspecified
 			repeat = 1;
