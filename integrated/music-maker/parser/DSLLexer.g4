@@ -1,21 +1,22 @@
 lexer grammar DSLLexer;
 
 SOUND_START : 'Sound' WS+ -> mode(TEXT_MODE);
-PRESET: 'as Preset';
-CLIP: 'as Clip';
+AS: 'as ';
+SUBTYPE: 'Preset' | 'Clip';
 SOUND_END: 'EndSound';
 
 COMBINATION_START : 'Combination' WS+ -> mode(TEXT_MODE);
+COMBINATION_END : 'EndCombination';
 
 TRACK_START: 'Track';
 TRACK_END: 'EndTrack';
 
-PLAY: 'Play' WS+ -> mode(TEXT_MODE);
+PLAY_START: 'Play' WS+ -> mode(TEXT_MODE);
 
 //Options
 PATTERN_START: 'Pattern:' WS* -> mode(TEXT_MODE);
 REPEAT_START: 'Repeat:' WS*;
-USESOUND_START: 'UseSound:' WS* '"' -> mode(USESOUNDS_MODE);
+USESOUND_START: 'UseSound:' WS* '"' -> mode(USESOUND_MODE);
 VOLUME_START: 'Volume:' WS*;
 OFFSET_START: 'Offset:' WS*;
 MAXLENGTH_START: 'MaxLength:' WS*;
@@ -29,13 +30,11 @@ TEXT : ~[[\]\r\n ]+ -> mode(DEFAULT_MODE);
 
 // Mode for tokenizing the special case Components field
 mode COMPONENT_MODE;
-COMPONENT_REPEAT: [0-9]+;
 MULTIPLY: '*'-> channel(HIDDEN);
 COMPONENT_NAME: ~[[\]\r\n,* ]+;
 COMPONENTS_END: ']' -> mode(DEFAULT_MODE);
 COMMA: ',' WS* -> channel(HIDDEN);
 
-// Mode for tokenizing the special case UseSounds field
-mode USESOUNDS_MODE;
-USESOUNDS: ~[[\]\r\n"' ]+;
-USESOUNDS_END: '"' -> mode(DEFAULT_MODE);
+mode USESOUND_MODE;
+USESOUNDS: ~[[\]'"]+;
+USESOUND_END: '"' -> mode(DEFAULT_MODE);
