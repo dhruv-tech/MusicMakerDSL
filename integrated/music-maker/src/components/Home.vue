@@ -56,7 +56,8 @@
                                 <li>TEXT in each <code>component</code> must match a <code>soundname</code> created by you</li>
                                 <li>
                                     If a <code>sound</code> has <code>SUBTYPE</code> "Clip", <code>USESOUNDS</code> must be
-                                    made of proper chord patterns (e.g. CM for C major, Cm for C minor) each separated by a space
+                                    made of proper chord patterns (e.g. 'C#' for C-sharp, 'Cb' for C-flat, or just 'C' for regular 
+                                    C chord) each separated by a space
                                 </li>
                                 <li>
                                     The indentation level on each line does not affect the success/failure of running the DSL.
@@ -76,7 +77,7 @@
 <!--                             -->Sound Melody1 as Clip
 <!--                             -->    Pattern: x
 <!--                             -->    Repeat: 5
-<!--                             -->    UseSound: "CM Dm FM"
+<!--                             -->    UseSound: "C# Db F"
 <!--                             -->    EndSound
 
 <!--                             -->Combination Draft1
