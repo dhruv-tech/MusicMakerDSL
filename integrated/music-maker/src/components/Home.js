@@ -1,6 +1,7 @@
 
 import scribble from 'scribbletune/browser.js';
 import soundEngine from '../../sound-engine/engine.js';
+import { Modal } from 'bootstrap';
 
 export default {
     name: 'Home',
@@ -50,5 +51,11 @@ export default {
         }
     },
     beforeMount(){
-    }
+    },
+    data: () => ({
+        modal: null
+    }),
+    mounted() {
+        this.modal = new Modal(this.$refs.docsModal)
+    },
 }
