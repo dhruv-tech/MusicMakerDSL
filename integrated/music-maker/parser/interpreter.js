@@ -13,19 +13,32 @@ import Visitor from './DSLParserVisitor.js';
 
 dsl.interpret = (input) => {
     
-    let chars = new InputStream(input, true)
-    let lexer = new Lexer(chars);
-    let tokens  = new CommonTokenStream(lexer);
-    let parser = new Parser(tokens);
+    let chars, lexer, tokens, parser, val, tree, visitor;
 
-    parser.buildParseTrees = true;
+    try {
+        // Tokenization and Parsing
+        chars = new InputStream(input, true);
+        lexer = new Lexer(chars);
+        tokens  = new CommonTokenStream(lexer);
+        parser = new Parser(tokens);
 
-    let tree = parser.program();
-    let visitor = new Visitor();
+        parser.buildParseTrees = true;
 
-    let val = tree.accept(visitor);
-    console.log(val);
-    return val;
+    } catch(e) {
+        console.log("Syntax Error: Invalid syntax");
+    }
+
+    try {
+        // ASTVisitor returns an array of objects to be used by sound engine
+        tree = parser.program();
+        visitor = new Visitor();
+        val = tree.accept(visitor);
+
+        console.log(val);
+        return val;
+    } catch(e) {
+        console.log("Syntax Error: Missing crucial values");
+    }
 
 }
 

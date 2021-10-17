@@ -12,12 +12,35 @@ export default {
         test: async() => {
 
 
-            let input = `Sound Kick1 as Preset
-            	Pattern: x-xx-x
+            let input = 
+            `Sound Kick1 as Preset
+                Pattern: x-xx-x
                 Repeat: 10
-            	UseSound: "Kick"
-            	Volume: 10
-            EndSound`;
+                UseSound: "Kick"
+            EndSound
+
+            Sound Melody1 as Clip
+                Pattern: x
+                Repeat: 5
+                UseSound: "CM Dm FM"
+            EndSound
+
+            Combination Draft1
+                Track
+                    MaxLength: 50
+                    Volume: 10
+                    Components: [5*Kick1, 5*Melody1]
+                EndTrack
+                Track
+                    MaxLength: 35
+                    Offset: 10
+                    Volume: 5
+                    Components: [15*Kick1, 6*Melody1]
+                EndTrack
+            EndCombination
+
+            Play Draft1`;
+            
             let check = dsl.interpret(input);
 
             let testInput = [
