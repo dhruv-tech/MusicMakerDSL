@@ -21,10 +21,23 @@ body{
     border: 2px solid #58E2CC;
     border-radius: 0.8em;
 }
+
 .button-custom:hover {
     color: #fff;
     background-color: #58E2CC;
 }
+
+.card{
+    background-color: #F0F3F5;
+    border-radius: 1em;
+    /* width: 100%; */
+}
+
+.container-card {
+    max-height: 95%;
+    overflow-y: auto;
+}
+
 .container-responsive {
     display: flex;
     flex-direction: column;
@@ -97,6 +110,10 @@ body{
     background-color: #00A6DA;
     border-radius: 20px;
     border: 3px solid #919395;
+}
+
+.text-dark {
+    color: #4C5052;
 }
 
 .text-grey {

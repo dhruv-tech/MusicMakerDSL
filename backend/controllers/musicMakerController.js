@@ -13,24 +13,60 @@ import combination from '../sound-engine/combination.js';
 
 contactController.helloWorld = async(req, res) => {
 
-//     let input = `Sound Kick1 as Preset
-// 	Pattern: x-xx-x
-//   Repeat: 10
-// 	UseSound: "Kick"
-// 	Volume: 10
-// EndSound`;
-//     let chars = new InputStream(input, true)
-//     let lexer = new Lexer(chars);
-//     let tokens  = new CommonTokenStream(lexer);
-//     let parser = new Parser(tokens);
+    let input = 
+`Sound Kick1 as Preset
+	Pattern: x-xx-x
+    Repeat: 10
+	UseSound: "Kick"
+EndSound
 
-//     parser.buildParseTrees = true;
+Sound Melody1 as Clip
+	Pattern: x
+    Repeat: 5
+	UseSound: "CM Dm FM"
+EndSound
 
-//     let tree = parser.program();
-//     let visitor = new Visitor();
+Combination Draft1
+	Track
+		MaxLength: 50
+		Volume: 10
+		Components: [5*Kick1, 5*Melody1]
+	EndTrack
+	Track
+		MaxLength: 35
+		Offset: 10
+		Volume: 5
+		Components: [15*Kick1, 6*Melody1]
+	EndTrack
+EndCombination
 
-//     let val = tree.accept(visitor);
-//     //console.log(val);
+Play Draft1`;
+
+    let chars, lexer, tokens, parser, val, tree, visitor;
+
+    try {
+        // Tokenization and Parsing
+        chars = new InputStream(input, true);
+        lexer = new Lexer(chars);
+        tokens  = new CommonTokenStream(lexer);
+        parser = new Parser(tokens);
+
+        parser.buildParseTrees = true;
+
+    } catch(e) {
+        console.log("Syntax Error: Invalid syntax");
+    }
+
+    try {
+        // ASTVisitor returns an array of objects to be used by sound engine
+        tree = parser.program();
+        visitor = new Visitor();
+        val = tree.accept(visitor);
+
+        console.log(val);
+    } catch(e) {
+        console.log("Syntax Error: Missing crucial values");
+    }
 
     // let testInput = [
     //     {

@@ -261,6 +261,40 @@ Play Draft1
 <p>As seen on our jira project</p>
 <a href="https://ibb.co/QkyCHx2"><img src="https://i.ibb.co/7QsRp0w/Screenshot-1.jpg" alt="Screenshot-1" border="0"></a>
 
+# Milestone 5
+
+## Status of Implementation
+
+### Complete
+<ul>
+<li>Set up programming environment</li>
+<li>Set up hosting/deployment</li>
+<li>Complete Lexer</li>
+<li>Complete Parser</li>
+<li>Complete AST</li>
+</ul>
+
+### In Progress
+<ul>
+<li>Front end UI</li>
+<li>Complete Static Checks</li>
+<li>Complete Evaluation Stage</li>
+<li>Error checking/messages</li>
+</ul>
+
+## Status of Final User Study
+
+<p>Planned out and ready to go, waiting on implementation to be finished</p>
+
+## Planned Timeline
+
+<ul>
+<li>Finish Implementation (by Friday Night)</li>
+<li>Bug Fixes and Tweaks (Saturday)</li>
+<li>Perform User Study + Film Video Presentation (Sunday)</li>
+<li>Submit for Deadline (Monday morning 9am)</li>
+</ul>
+
 ## Current DSL Example
 
 ~~~
@@ -291,6 +325,7 @@ Combination Draft1
 		Volume: 5
 		Components: [15*Kick1, 6*Melody1]
 	EndTrack
+EndCombination
 
 Play Draft1
 ~~~
