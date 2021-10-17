@@ -1,5 +1,5 @@
 
-import scribble from 'scribbletune/browser.js';
+import dsl from '../../parser/interpreter.js';
 import soundEngine from '../../sound-engine/engine.js';
 
 export default {
@@ -9,6 +9,16 @@ export default {
     },
     methods:{
         test: async() => {
+
+
+            let input = `Sound Kick1 as Preset
+            	Pattern: x-xx-x
+                Repeat: 10
+            	UseSound: "Kick"
+            	Volume: 10
+            EndSound`;
+            let check = dsl.interpret(input);
+
             let testInput = [
                 {
                     type: 'Sound',

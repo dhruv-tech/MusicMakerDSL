@@ -46,10 +46,6 @@ player.render = async(combination, audioData) => {
                 }
             }
         }
-        // Iterate components
-        
-        // Create ctx for each component and set volume using gain node
-        // Play with offset
 
         // Return ctx to control playback later
 
