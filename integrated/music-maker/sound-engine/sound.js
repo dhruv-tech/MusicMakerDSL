@@ -67,7 +67,7 @@ const generateFromPreset = (soundSpec) => {
         let crunkerManifest = [];
 
         for (let pattern of patternArray) {
-            // console.log(pattern);
+            
             if (pattern == 'x') {
                 crunkerManifest.push(decodedAudio);
             } else if (pattern == '-') {
@@ -86,11 +86,6 @@ const generateFromPreset = (soundSpec) => {
         // Output
 
         let output = await crunker.concatAudio(crunkerManifest);
-
-        // const play = context.createBufferSource();
-        // play.buffer = output;
-        // play.connect(context.destination);
-        // play.start(context.currentTime + 0.25);
 
         resolve({error: false, type: 'buffer', buffer: output});
         
@@ -127,13 +122,31 @@ const generateFromClip = (soundSpec) => {
             }
         }
 
-        // Manage Repeat
+        // Manage Pattern
 
-        for (let i = 1; i < soundSpec.repeat; i++) {
-            notesSeq = notesSeq.concat(notesSeq);
+        let patternArray = soundSpec.pattern.split('');
+        
+        let notesSeqManifest = [];
+
+        for (let pattern of patternArray) {
+            
+            if (pattern == 'x') {
+                notesSeqManifest = notesSeqManifest.concat(notesSeq);
+            } else if (pattern == '-') {
+                notesSeqManifest = notesSeqManifest.concat([0]);
+            } else {
+                reject({error: true, desc: `Format of pattern in sound block '${soundSpec.name}' is not valid`});
+            }
         }
 
-        resolve({error: false, type: 'sequence', sequence: notesSeq});
+        // Manage Repeat
+
+        let temp = notesSeqManifest;
+        for (let i = 1; i < soundSpec.repeat; i++) {
+            notesSeqManifest = notesSeqManifest.concat(temp);
+        }
+
+        resolve({error: false, type: 'sequence', sequence: notesSeqManifest});
     })
 
 
