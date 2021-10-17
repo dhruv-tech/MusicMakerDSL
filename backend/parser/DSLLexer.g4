@@ -19,7 +19,6 @@ REPEAT_START: 'Repeat:' WS*;
 USESOUND_START: 'UseSound:' WS* '"' -> mode(USESOUND_MODE);
 VOLUME_START: 'Volume:' WS*;
 OFFSET_START: 'Offset:' WS*;
-MAXLENGTH_START: 'MaxLength:' WS*;
 COMPONENTS_START: 'Components:' WS* '[' WS* -> mode(COMPONENT_MODE);
 
 WS : [\r\n\t ] -> channel(HIDDEN);
@@ -31,6 +30,7 @@ TEXT : ~[[\]\r\n ]+ -> mode(DEFAULT_MODE);
 // Mode for tokenizing the special case Components field
 mode COMPONENT_MODE;
 MULTIPLY: '*'-> channel(HIDDEN);
+COMPONENT_REPEAT: [0-9]+;
 COMPONENT_NAME: ~[[\]\r\n,* ]+;
 COMPONENTS_END: ']' -> mode(DEFAULT_MODE);
 COMMA: ',' WS* -> channel(HIDDEN);

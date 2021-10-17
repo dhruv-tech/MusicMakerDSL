@@ -5,64 +5,60 @@ import DSLParserVisitor from './DSLParserVisitor.js';
 
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
-    "\u5964\u0003\u001bn\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
+    "\u5964\u0003\u001bf\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
     "\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007",
     "\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f",
-    "\u0004\r\t\r\u0004\u000e\t\u000e\u0003\u0002\u0006\u0002\u001e\n\u0002",
-    "\r\u0002\u000e\u0002\u001f\u0003\u0002\u0003\u0002\u0003\u0002\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0005\u0004.\n\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0005\u0003\u0005\u0003\u0005\u0006\u00056",
-    "\n\u0005\r\u0005\u000e\u00057\u0003\u0005\u0003\u0005\u0003\u0006\u0003",
-    "\u0006\u0005\u0006>\n\u0006\u0003\u0006\u0005\u0006A\n\u0006\u0003\u0006",
-    "\u0005\u0006D\n\u0006\u0003\u0006\u0007\u0006G\n\u0006\f\u0006\u000e",
-    "\u0006J\u000b\u0006\u0003\u0006\u0003\u0006\u0003\u0007\u0003\u0007",
-    "\u0003\u0007\u0003\b\u0003\b\u0003\b\u0003\t\u0003\t\u0003\t\u0003\t",
-    "\u0003\n\u0003\n\u0003\n\u0003\u000b\u0003\u000b\u0003\u000b\u0003\f",
-    "\u0003\f\u0003\f\u0003\r\u0003\r\u0006\rc\n\r\r\r\u000e\rd\u0003\r\u0003",
-    "\r\u0003\u000e\u0005\u000ej\n\u000e\u0003\u000e\u0003\u000e\u0003\u000e",
-    "\u0002\u0002\u000f\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016",
-    "\u0018\u001a\u0002\u0002\u0002i\u0002\u001d\u0003\u0002\u0002\u0002",
-    "\u0004$\u0003\u0002\u0002\u0002\u0006\'\u0003\u0002\u0002\u0002\b2\u0003",
-    "\u0002\u0002\u0002\n;\u0003\u0002\u0002\u0002\fM\u0003\u0002\u0002\u0002",
-    "\u000eP\u0003\u0002\u0002\u0002\u0010S\u0003\u0002\u0002\u0002\u0012",
-    "W\u0003\u0002\u0002\u0002\u0014Z\u0003\u0002\u0002\u0002\u0016]\u0003",
-    "\u0002\u0002\u0002\u0018`\u0003\u0002\u0002\u0002\u001ai\u0003\u0002",
-    "\u0002\u0002\u001c\u001e\u0005\u0006\u0004\u0002\u001d\u001c\u0003\u0002",
-    "\u0002\u0002\u001e\u001f\u0003\u0002\u0002\u0002\u001f\u001d\u0003\u0002",
-    "\u0002\u0002\u001f \u0003\u0002\u0002\u0002 !\u0003\u0002\u0002\u0002",
-    "!\"\u0005\b\u0005\u0002\"#\u0005\u0004\u0003\u0002#\u0003\u0003\u0002",
-    "\u0002\u0002$%\u0007\u000b\u0002\u0002%&\u0007\u0015\u0002\u0002&\u0005",
-    "\u0003\u0002\u0002\u0002\'(\u0007\u0003\u0002\u0002()\u0007\u0015\u0002",
-    "\u0002)*\u0007\u0004\u0002\u0002*+\u0007\u0005\u0002\u0002+-\u0005\f",
-    "\u0007\u0002,.\u0005\u000e\b\u0002-,\u0003\u0002\u0002\u0002-.\u0003",
-    "\u0002\u0002\u0002./\u0003\u0002\u0002\u0002/0\u0005\u0010\t\u00020",
-    "1\u0007\u0006\u0002\u00021\u0007\u0003\u0002\u0002\u000223\u0007\u0007",
-    "\u0002\u000235\u0007\u0015\u0002\u000246\u0005\n\u0006\u000254\u0003",
-    "\u0002\u0002\u000267\u0003\u0002\u0002\u000275\u0003\u0002\u0002\u0002",
-    "78\u0003\u0002\u0002\u000289\u0003\u0002\u0002\u00029:\u0007\b\u0002",
-    "\u0002:\t\u0003\u0002\u0002\u0002;=\u0007\t\u0002\u0002<>\u0005\u0014",
-    "\u000b\u0002=<\u0003\u0002\u0002\u0002=>\u0003\u0002\u0002\u0002>@\u0003",
-    "\u0002\u0002\u0002?A\u0005\u0016\f\u0002@?\u0003\u0002\u0002\u0002@",
-    "A\u0003\u0002\u0002\u0002AC\u0003\u0002\u0002\u0002BD\u0005\u0012\n",
-    "\u0002CB\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002DH\u0003\u0002",
-    "\u0002\u0002EG\u0005\u0018\r\u0002FE\u0003\u0002\u0002\u0002GJ\u0003",
-    "\u0002\u0002\u0002HF\u0003\u0002\u0002\u0002HI\u0003\u0002\u0002\u0002",
-    "IK\u0003\u0002\u0002\u0002JH\u0003\u0002\u0002\u0002KL\u0007\n\u0002",
-    "\u0002L\u000b\u0003\u0002\u0002\u0002MN\u0007\f\u0002\u0002NO\u0007",
-    "\u0015\u0002\u0002O\r\u0003\u0002\u0002\u0002PQ\u0007\r\u0002\u0002",
-    "QR\u0007\u0014\u0002\u0002R\u000f\u0003\u0002\u0002\u0002ST\u0007\u000e",
-    "\u0002\u0002TU\u0007\u001a\u0002\u0002UV\u0007\u001b\u0002\u0002V\u0011",
-    "\u0003\u0002\u0002\u0002WX\u0007\u000f\u0002\u0002XY\u0007\u0014\u0002",
-    "\u0002Y\u0013\u0003\u0002\u0002\u0002Z[\u0007\u0011\u0002\u0002[\\\u0007",
-    "\u0014\u0002\u0002\\\u0015\u0003\u0002\u0002\u0002]^\u0007\u0010\u0002",
-    "\u0002^_\u0007\u0014\u0002\u0002_\u0017\u0003\u0002\u0002\u0002`b\u0007",
-    "\u0012\u0002\u0002ac\u0005\u001a\u000e\u0002ba\u0003\u0002\u0002\u0002",
-    "cd\u0003\u0002\u0002\u0002db\u0003\u0002\u0002\u0002de\u0003\u0002\u0002",
-    "\u0002ef\u0003\u0002\u0002\u0002fg\u0007\u0018\u0002\u0002g\u0019\u0003",
-    "\u0002\u0002\u0002hj\u0007\u0014\u0002\u0002ih\u0003\u0002\u0002\u0002",
-    "ij\u0003\u0002\u0002\u0002jk\u0003\u0002\u0002\u0002kl\u0007\u0017\u0002",
-    "\u0002l\u001b\u0003\u0002\u0002\u0002\u000b\u001f-7=@CHdi"].join("");
+    "\u0004\r\t\r\u0003\u0002\u0006\u0002\u001c\n\u0002\r\u0002\u000e\u0002",
+    "\u001d\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+    "\u0004\u0005\u0004,\n\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+    "\u0005\u0003\u0005\u0003\u0005\u0006\u00054\n\u0005\r\u0005\u000e\u0005",
+    "5\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006\u0005\u0006<\n\u0006",
+    "\u0003\u0006\u0005\u0006?\n\u0006\u0003\u0006\u0007\u0006B\n\u0006\f",
+    "\u0006\u000e\u0006E\u000b\u0006\u0003\u0006\u0003\u0006\u0003\u0007",
+    "\u0003\u0007\u0003\u0007\u0003\b\u0003\b\u0003\b\u0003\t\u0003\t\u0003",
+    "\t\u0003\t\u0003\n\u0003\n\u0003\n\u0003\u000b\u0003\u000b\u0003\u000b",
+    "\u0003\f\u0003\f\u0006\f[\n\f\r\f\u000e\f\\\u0003\f\u0003\f\u0003\r",
+    "\u0005\rb\n\r\u0003\r\u0003\r\u0003\r\u0002\u0002\u000e\u0002\u0004",
+    "\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u0002\u0002\u0002a",
+    "\u0002\u001b\u0003\u0002\u0002\u0002\u0004\"\u0003\u0002\u0002\u0002",
+    "\u0006%\u0003\u0002\u0002\u0002\b0\u0003\u0002\u0002\u0002\n9\u0003",
+    "\u0002\u0002\u0002\fH\u0003\u0002\u0002\u0002\u000eK\u0003\u0002\u0002",
+    "\u0002\u0010N\u0003\u0002\u0002\u0002\u0012R\u0003\u0002\u0002\u0002",
+    "\u0014U\u0003\u0002\u0002\u0002\u0016X\u0003\u0002\u0002\u0002\u0018",
+    "a\u0003\u0002\u0002\u0002\u001a\u001c\u0005\u0006\u0004\u0002\u001b",
+    "\u001a\u0003\u0002\u0002\u0002\u001c\u001d\u0003\u0002\u0002\u0002\u001d",
+    "\u001b\u0003\u0002\u0002\u0002\u001d\u001e\u0003\u0002\u0002\u0002\u001e",
+    "\u001f\u0003\u0002\u0002\u0002\u001f \u0005\b\u0005\u0002 !\u0005\u0004",
+    "\u0003\u0002!\u0003\u0003\u0002\u0002\u0002\"#\u0007\u000b\u0002\u0002",
+    "#$\u0007\u0014\u0002\u0002$\u0005\u0003\u0002\u0002\u0002%&\u0007\u0003",
+    "\u0002\u0002&\'\u0007\u0014\u0002\u0002\'(\u0007\u0004\u0002\u0002(",
+    ")\u0007\u0005\u0002\u0002)+\u0005\f\u0007\u0002*,\u0005\u000e\b\u0002",
+    "+*\u0003\u0002\u0002\u0002+,\u0003\u0002\u0002\u0002,-\u0003\u0002\u0002",
+    "\u0002-.\u0005\u0010\t\u0002./\u0007\u0006\u0002\u0002/\u0007\u0003",
+    "\u0002\u0002\u000201\u0007\u0007\u0002\u000213\u0007\u0014\u0002\u0002",
+    "24\u0005\n\u0006\u000232\u0003\u0002\u0002\u000245\u0003\u0002\u0002",
+    "\u000253\u0003\u0002\u0002\u000256\u0003\u0002\u0002\u000267\u0003\u0002",
+    "\u0002\u000278\u0007\b\u0002\u00028\t\u0003\u0002\u0002\u00029;\u0007",
+    "\t\u0002\u0002:<\u0005\u0014\u000b\u0002;:\u0003\u0002\u0002\u0002;",
+    "<\u0003\u0002\u0002\u0002<>\u0003\u0002\u0002\u0002=?\u0005\u0012\n",
+    "\u0002>=\u0003\u0002\u0002\u0002>?\u0003\u0002\u0002\u0002?C\u0003\u0002",
+    "\u0002\u0002@B\u0005\u0016\f\u0002A@\u0003\u0002\u0002\u0002BE\u0003",
+    "\u0002\u0002\u0002CA\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002",
+    "DF\u0003\u0002\u0002\u0002EC\u0003\u0002\u0002\u0002FG\u0007\n\u0002",
+    "\u0002G\u000b\u0003\u0002\u0002\u0002HI\u0007\f\u0002\u0002IJ\u0007",
+    "\u0014\u0002\u0002J\r\u0003\u0002\u0002\u0002KL\u0007\r\u0002\u0002",
+    "LM\u0007\u0013\u0002\u0002M\u000f\u0003\u0002\u0002\u0002NO\u0007\u000e",
+    "\u0002\u0002OP\u0007\u001a\u0002\u0002PQ\u0007\u001b\u0002\u0002Q\u0011",
+    "\u0003\u0002\u0002\u0002RS\u0007\u000f\u0002\u0002ST\u0007\u0013\u0002",
+    "\u0002T\u0013\u0003\u0002\u0002\u0002UV\u0007\u0010\u0002\u0002VW\u0007",
+    "\u0013\u0002\u0002W\u0015\u0003\u0002\u0002\u0002XZ\u0007\u0011\u0002",
+    "\u0002Y[\u0005\u0018\r\u0002ZY\u0003\u0002\u0002\u0002[\\\u0003\u0002",
+    "\u0002\u0002\\Z\u0003\u0002\u0002\u0002\\]\u0003\u0002\u0002\u0002]",
+    "^\u0003\u0002\u0002\u0002^_\u0007\u0018\u0002\u0002_\u0017\u0003\u0002",
+    "\u0002\u0002`b\u0007\u0016\u0002\u0002a`\u0003\u0002\u0002\u0002ab\u0003",
+    "\u0002\u0002\u0002bc\u0003\u0002\u0002\u0002cd\u0007\u0017\u0002\u0002",
+    "d\u0019\u0003\u0002\u0002\u0002\n\u001d+5;>C\\a"].join("");
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -77,18 +73,18 @@ export default class DSLParser extends antlr4.Parser {
     static literalNames = [ null, null, "'as '", null, "'EndSound'", null, 
                             "'EndCombination'", "'Track'", "'EndTrack'", 
                             null, null, null, null, null, null, null, null, 
-                            null, null, null, "'*'", null, "']'", null, 
+                            null, null, "'*'", null, null, "']'", null, 
                             null, "'\"'" ];
     static symbolicNames = [ null, "SOUND_START", "AS", "SUBTYPE", "SOUND_END", 
                              "COMBINATION_START", "COMBINATION_END", "TRACK_START", 
                              "TRACK_END", "PLAY_START", "PATTERN_START", 
                              "REPEAT_START", "USESOUND_START", "VOLUME_START", 
-                             "OFFSET_START", "MAXLENGTH_START", "COMPONENTS_START", 
-                             "WS", "NUM", "TEXT", "MULTIPLY", "COMPONENT_NAME", 
+                             "OFFSET_START", "COMPONENTS_START", "WS", "NUM", 
+                             "TEXT", "MULTIPLY", "COMPONENT_REPEAT", "COMPONENT_NAME", 
                              "COMPONENTS_END", "COMMA", "USESOUNDS", "USESOUND_END" ];
     static ruleNames = [ "program", "play", "sound", "combination", "track", 
-                         "pattern", "repeat", "usesound", "volume", "maxlength", 
-                         "offset", "components", "component" ];
+                         "pattern", "repeat", "usesound", "volume", "offset", 
+                         "components", "component" ];
 
     constructor(input) {
         super(input);
@@ -110,19 +106,19 @@ export default class DSLParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 27; 
+	        this.state = 25; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 26;
+	            this.state = 24;
 	            this.sound();
-	            this.state = 29; 
+	            this.state = 27; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        } while(_la===DSLParser.SOUND_START);
-	        this.state = 31;
+	        this.state = 29;
 	        this.combination();
-	        this.state = 32;
+	        this.state = 30;
 	        this.play();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -145,9 +141,9 @@ export default class DSLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 2, DSLParser.RULE_play);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 34;
+	        this.state = 32;
 	        this.match(DSLParser.PLAY_START);
-	        this.state = 35;
+	        this.state = 33;
 	        this.match(DSLParser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -171,27 +167,27 @@ export default class DSLParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 37;
+	        this.state = 35;
 	        this.match(DSLParser.SOUND_START);
-	        this.state = 38;
+	        this.state = 36;
 	        this.match(DSLParser.TEXT);
-	        this.state = 39;
+	        this.state = 37;
 	        this.match(DSLParser.AS);
-	        this.state = 40;
+	        this.state = 38;
 	        this.match(DSLParser.SUBTYPE);
-	        this.state = 41;
+	        this.state = 39;
 	        this.pattern();
-	        this.state = 43;
+	        this.state = 41;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if(_la===DSLParser.REPEAT_START) {
-	            this.state = 42;
+	            this.state = 40;
 	            this.repeat();
 	        }
 
-	        this.state = 45;
+	        this.state = 43;
 	        this.usesound();
-	        this.state = 46;
+	        this.state = 44;
 	        this.match(DSLParser.SOUND_END);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -215,21 +211,21 @@ export default class DSLParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 48;
+	        this.state = 46;
 	        this.match(DSLParser.COMBINATION_START);
-	        this.state = 49;
+	        this.state = 47;
 	        this.match(DSLParser.TEXT);
-	        this.state = 51; 
+	        this.state = 49; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 50;
+	            this.state = 48;
 	            this.track();
-	            this.state = 53; 
+	            this.state = 51; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        } while(_la===DSLParser.TRACK_START);
-	        this.state = 55;
+	        this.state = 53;
 	        this.match(DSLParser.COMBINATION_END);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -253,43 +249,35 @@ export default class DSLParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 57;
+	        this.state = 55;
 	        this.match(DSLParser.TRACK_START);
-	        this.state = 59;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        if(_la===DSLParser.MAXLENGTH_START) {
-	            this.state = 58;
-	            this.maxlength();
-	        }
-
-	        this.state = 62;
+	        this.state = 57;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if(_la===DSLParser.OFFSET_START) {
-	            this.state = 61;
+	            this.state = 56;
 	            this.offset();
+	        }
+
+	        this.state = 60;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===DSLParser.VOLUME_START) {
+	            this.state = 59;
+	            this.volume();
 	        }
 
 	        this.state = 65;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===DSLParser.VOLUME_START) {
-	            this.state = 64;
-	            this.volume();
-	        }
-
-	        this.state = 70;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
 	        while(_la===DSLParser.COMPONENTS_START) {
-	            this.state = 67;
+	            this.state = 62;
 	            this.components();
-	            this.state = 72;
+	            this.state = 67;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 73;
+	        this.state = 68;
 	        this.match(DSLParser.TRACK_END);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -312,9 +300,9 @@ export default class DSLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, DSLParser.RULE_pattern);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
+	        this.state = 70;
 	        this.match(DSLParser.PATTERN_START);
-	        this.state = 76;
+	        this.state = 71;
 	        this.match(DSLParser.TEXT);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -337,9 +325,9 @@ export default class DSLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, DSLParser.RULE_repeat);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 78;
+	        this.state = 73;
 	        this.match(DSLParser.REPEAT_START);
-	        this.state = 79;
+	        this.state = 74;
 	        this.match(DSLParser.NUM);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -362,11 +350,11 @@ export default class DSLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, DSLParser.RULE_usesound);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 81;
+	        this.state = 76;
 	        this.match(DSLParser.USESOUND_START);
-	        this.state = 82;
+	        this.state = 77;
 	        this.match(DSLParser.USESOUNDS);
-	        this.state = 83;
+	        this.state = 78;
 	        this.match(DSLParser.USESOUND_END);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -389,34 +377,9 @@ export default class DSLParser extends antlr4.Parser {
 	    this.enterRule(localctx, 16, DSLParser.RULE_volume);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85;
+	        this.state = 80;
 	        this.match(DSLParser.VOLUME_START);
-	        this.state = 86;
-	        this.match(DSLParser.NUM);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	maxlength() {
-	    let localctx = new MaxlengthContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, DSLParser.RULE_maxlength);
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 88;
-	        this.match(DSLParser.MAXLENGTH_START);
-	        this.state = 89;
+	        this.state = 81;
 	        this.match(DSLParser.NUM);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -436,12 +399,12 @@ export default class DSLParser extends antlr4.Parser {
 
 	offset() {
 	    let localctx = new OffsetContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 20, DSLParser.RULE_offset);
+	    this.enterRule(localctx, 18, DSLParser.RULE_offset);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 91;
+	        this.state = 83;
 	        this.match(DSLParser.OFFSET_START);
-	        this.state = 92;
+	        this.state = 84;
 	        this.match(DSLParser.NUM);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -461,23 +424,23 @@ export default class DSLParser extends antlr4.Parser {
 
 	components() {
 	    let localctx = new ComponentsContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, DSLParser.RULE_components);
+	    this.enterRule(localctx, 20, DSLParser.RULE_components);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 94;
+	        this.state = 86;
 	        this.match(DSLParser.COMPONENTS_START);
-	        this.state = 96; 
+	        this.state = 88; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 95;
+	            this.state = 87;
 	            this.component();
-	            this.state = 98; 
+	            this.state = 90; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===DSLParser.NUM || _la===DSLParser.COMPONENT_NAME);
-	        this.state = 100;
+	        } while(_la===DSLParser.COMPONENT_REPEAT || _la===DSLParser.COMPONENT_NAME);
+	        this.state = 92;
 	        this.match(DSLParser.COMPONENTS_END);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -497,19 +460,19 @@ export default class DSLParser extends antlr4.Parser {
 
 	component() {
 	    let localctx = new ComponentContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 24, DSLParser.RULE_component);
+	    this.enterRule(localctx, 22, DSLParser.RULE_component);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 103;
+	        this.state = 95;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===DSLParser.NUM) {
-	            this.state = 102;
-	            this.match(DSLParser.NUM);
+	        if(_la===DSLParser.COMPONENT_REPEAT) {
+	            this.state = 94;
+	            this.match(DSLParser.COMPONENT_REPEAT);
 	        }
 
-	        this.state = 105;
+	        this.state = 97;
 	        this.match(DSLParser.COMPONENT_NAME);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -543,12 +506,12 @@ DSLParser.REPEAT_START = 11;
 DSLParser.USESOUND_START = 12;
 DSLParser.VOLUME_START = 13;
 DSLParser.OFFSET_START = 14;
-DSLParser.MAXLENGTH_START = 15;
-DSLParser.COMPONENTS_START = 16;
-DSLParser.WS = 17;
-DSLParser.NUM = 18;
-DSLParser.TEXT = 19;
-DSLParser.MULTIPLY = 20;
+DSLParser.COMPONENTS_START = 15;
+DSLParser.WS = 16;
+DSLParser.NUM = 17;
+DSLParser.TEXT = 18;
+DSLParser.MULTIPLY = 19;
+DSLParser.COMPONENT_REPEAT = 20;
 DSLParser.COMPONENT_NAME = 21;
 DSLParser.COMPONENTS_END = 22;
 DSLParser.COMMA = 23;
@@ -564,10 +527,9 @@ DSLParser.RULE_pattern = 5;
 DSLParser.RULE_repeat = 6;
 DSLParser.RULE_usesound = 7;
 DSLParser.RULE_volume = 8;
-DSLParser.RULE_maxlength = 9;
-DSLParser.RULE_offset = 10;
-DSLParser.RULE_components = 11;
-DSLParser.RULE_component = 12;
+DSLParser.RULE_offset = 9;
+DSLParser.RULE_components = 10;
+DSLParser.RULE_component = 11;
 
 class ProgramContext extends antlr4.ParserRuleContext {
 
@@ -781,10 +743,6 @@ class TrackContext extends antlr4.ParserRuleContext {
 	    return this.getToken(DSLParser.TRACK_END, 0);
 	};
 
-	maxlength() {
-	    return this.getTypedRuleContext(MaxlengthContext,0);
-	};
-
 	offset() {
 	    return this.getTypedRuleContext(OffsetContext,0);
 	};
@@ -961,41 +919,6 @@ class VolumeContext extends antlr4.ParserRuleContext {
 
 
 
-class MaxlengthContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = DSLParser.RULE_maxlength;
-    }
-
-	MAXLENGTH_START() {
-	    return this.getToken(DSLParser.MAXLENGTH_START, 0);
-	};
-
-	NUM() {
-	    return this.getToken(DSLParser.NUM, 0);
-	};
-
-	accept(visitor) {
-	    if ( visitor instanceof DSLParserVisitor ) {
-	        return visitor.visitMaxlength(this);
-	    } else {
-	        return visitor.visitChildren(this);
-	    }
-	}
-
-
-}
-
-
-
 class OffsetContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
@@ -1095,8 +1018,8 @@ class ComponentContext extends antlr4.ParserRuleContext {
 	    return this.getToken(DSLParser.COMPONENT_NAME, 0);
 	};
 
-	NUM() {
-	    return this.getToken(DSLParser.NUM, 0);
+	COMPONENT_REPEAT() {
+	    return this.getToken(DSLParser.COMPONENT_REPEAT, 0);
 	};
 
 	accept(visitor) {
@@ -1122,7 +1045,6 @@ DSLParser.PatternContext = PatternContext;
 DSLParser.RepeatContext = RepeatContext; 
 DSLParser.UsesoundContext = UsesoundContext; 
 DSLParser.VolumeContext = VolumeContext; 
-DSLParser.MaxlengthContext = MaxlengthContext; 
 DSLParser.OffsetContext = OffsetContext; 
 DSLParser.ComponentsContext = ComponentsContext; 
 DSLParser.ComponentContext = ComponentContext; 
