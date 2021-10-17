@@ -67,7 +67,7 @@ const generateFromPreset = (soundSpec) => {
         let crunkerManifest = [];
 
         for (let pattern of patternArray) {
-            console.log(pattern);
+            // console.log(pattern);
             if (pattern == 'x') {
                 crunkerManifest.push(decodedAudio);
             } else if (pattern == '-') {

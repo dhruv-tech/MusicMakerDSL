@@ -50,7 +50,7 @@ export default class DSLParserVisitor extends antlr4.tree.ParseTreeVisitor {
 
 		// Create combination object
 		let combination = {
-			type: 'combination',
+			type: 'Combination',
 			name: ctx.TEXT().getText(),
 			tracks: this.visitChildren(ctx).filter(function(x) {return x !== undefined})
 		};

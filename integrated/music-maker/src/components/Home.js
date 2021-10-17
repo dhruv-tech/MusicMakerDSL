@@ -8,10 +8,30 @@ export default {
     props: {
       msg: String
     },
+    data: () => ({
+        modal: null,
+        dslStr: ''
+    }),
     methods:{
+        async runDSL (e) {
+            // console.log("running DSL: ");
+            // console.log(this.dslStr);
+            try {
+                const check = dsl.interpret(this.dslStr);
+                if (check) {
+                    // console.log("check");
+                    // console.log(check)
+                    await soundEngine.build(check);
+                } else {
+                    alert("Something went wrong while attempting to run your DSL.\nPlease check the console for possible solutions.");
+                }
+            } catch (error) {
+                alert(error?.message || error?.error || error);
+            }
+            
+            
+        },
         test: async() => {
-
-
             let input = 
             `Sound Kick1 as Preset
                 Pattern: x-xx-x
@@ -90,9 +110,6 @@ export default {
     },
     beforeMount(){
     },
-    data: () => ({
-        modal: null
-    }),
     mounted() {
         this.modal = new Modal(this.$refs.docsModal)
     },

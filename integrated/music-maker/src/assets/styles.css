@@ -78,6 +78,17 @@ body{
     text-align: right;
 }
 
+pre {
+    margin: 0;
+}
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 0 20px;
+}
+
 #run-btn {
     box-shadow: none;
 }

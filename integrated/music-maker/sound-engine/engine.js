@@ -37,7 +37,6 @@ engine.build = (specs) => {
         }
 
         // Process Combination
-
         let combination = specs.filter((block) => {
             return block.type == 'Combination';
         });
