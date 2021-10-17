@@ -55,7 +55,7 @@
                                 </li>
                                 <li>TEXT in each <code>component</code> must match a <code>soundname</code> created by you</li>
                                 <li>
-                                    If a <code>sound</code> has <code>SUBTYPE</code> "Clip", <code>USESOUNDs</code> must be
+                                    If a <code>sound</code> has <code>SUBTYPE</code> "Clip", <code>USESOUNDS</code> must be
                                     made of proper chord patterns (e.g. CM for C major, Cm for C minor) each separated by a space
                                 </li>
                                 <li>
