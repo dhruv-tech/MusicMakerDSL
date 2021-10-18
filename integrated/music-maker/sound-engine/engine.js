@@ -12,49 +12,61 @@ let recorder;
 engine.build = (specs) => {
 
     return new Promise(async(resolve, reject) => {
-        console.log(specs);
-        // Validate
+        
+        let sounds;
+        let audioData;
+        let combinations = [];
+        let play;
+
+        try {
+            // Validate
     
-        for (let [spec, idx] of specs.entries()) {
+            for (let [spec, idx] of specs.entries()) {
 
-            let firstKey = Object.keys(spec)[0];
-            if (firstKey === 'error') {
-                reject({error: `Sound/Combination Block ${idx}: ${spec.error}`});
+                let firstKey = Object.keys(spec)[0];
+                if (firstKey === 'error') {
+                    reject({error: `Sound/Combination Block ${idx}: ${spec.error}`});
+                }
             }
-        }
 
-        // Process Sounds
+            // Process Sounds
 
-        let sounds = specs.filter((block) => {
-            return block.type === 'Sound';
-        });
+            sounds = specs.filter((block) => {
+                return block.type === 'Sound';
+            });
 
-        let audioData = new Map();
-        for (let sound of sounds) {
-            console.log(sound);
-            try {
-                let data = await soundBuilder.render(sound);
-                audioData.set(sound.name, data);
-            } catch (error) {
-                reject(error);
+            audioData = new Map();
+            for (let sound of sounds) {
+                console.log(sound);
+                try {
+                    let data = await soundBuilder.render(sound);
+                    audioData.set(sound.name, data);
+                } catch (error) {
+                    reject(error);
+                }
+                
             }
-            
-        }
 
-        // Process Combination
+            // Process Combination
 
-        let combinations = specs.filter((block) => {
-            return block.type === 'Combination';
-        });
+            combinations = specs.filter((block) => {
+                return block.type === 'Combination';
+            });
 
-        // Process Play
+            // Process Play
 
-        let play = specs.filter((block) => {
-            return (Object.keys(block)[0] == 'play');
-        });
+            play = specs.filter((block) => {
+                return (Object.keys(block)[0] == 'play');
+            });
 
-        if (play.length > 1) {
-            reject("Only one play block is allowed");
+            if (play.length > 1) {
+                reject("Only one play block is allowed");
+            }
+
+        } catch (error) {
+            reject(`There were errors while trying to parse the DSL. \n
+            Please open the console in the browser developer tools (F12),
+            to see errors logged by antlr`);
         }
 
         let toPlay = null;
@@ -83,8 +95,6 @@ engine.build = (specs) => {
             const context = new AudioContext();
             const stereoMix = context.createMediaStreamDestination();
             recorder = new MediaRecorder(stereoMix.stream, { audioBitsPerSecond : 128000 });
-            console.log(context);
-            console.log(recorder);
             recorder.start();
 
             await combinationPlayer.render(toPlay, audioData, context, stereoMix);
@@ -93,9 +103,11 @@ engine.build = (specs) => {
             let recording = {
                 name: toPlay.name,
                 link: recordingLink,
-                time: Date.now()
+                time: new Date()
             }
+
             resolve(recording);
+
         } catch (error) {
             reject(error);
         }
@@ -111,9 +123,6 @@ const getRecording = () => {
             let arrayBuffer = await e.data.arrayBuffer();
             let recording_context = new AudioContext();
             let decodedAudio = await recording_context.decodeAudioData(arrayBuffer);
-    
-            //let crunker = new Crunker();
-            //let res = crunker.export(decodedAudio);
 
             let wav = toWav(decodedAudio);
             const blob = new window.Blob([ new DataView(wav) ], {
