@@ -43,6 +43,7 @@ engine.build = (specs) => {
                     audioData.set(sound.name, data);
                 } catch (error) {
                     reject(error);
+                    return;
                 }
                 
             }
@@ -61,12 +62,14 @@ engine.build = (specs) => {
 
             if (play.length > 1) {
                 reject("Only one play block is allowed");
+                return;
             }
 
         } catch (error) {
             reject(`There were errors while trying to parse the DSL. \n
             Please open the console in the browser developer tools (F12),
             to see errors logged by antlr`);
+            return;
         }
 
         let toPlay = null;
@@ -77,6 +80,7 @@ engine.build = (specs) => {
             if (combinationNames.indexOf(combination.name) != -1) {
 
                 reject(`Not allowed: Multiple play blocks named ${combination.name}`);
+                return;
 
             } else if (combination.name == play[0].play) {
                 toPlay = combination;
@@ -88,6 +92,7 @@ engine.build = (specs) => {
         if (toPlay == null) {
 
             reject(`No combination block named ${play[0].play}`);
+            return;
         }
 
         try {

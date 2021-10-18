@@ -6,7 +6,7 @@
             </button>
         </div>
         <div class="col gx-0 px-2 pt-1 top-round align-right history-header">
-            <div id="history-btn" class="btn text-grey" @click="test()">
+            <div id="history-btn" class="btn text-grey">
                 <b>
                     <i class="bi bi-arrow-counterclockwise"></i>
                     History
