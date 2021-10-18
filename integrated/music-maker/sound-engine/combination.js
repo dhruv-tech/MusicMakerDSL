@@ -7,7 +7,7 @@ import EventEmitter from 'events';
 const player = {};
 const event = new EventEmitter();
 
-player.render = async(combination, audioData, context, destination) => {
+player.render = async(combination, audioData, context, stereoMix) => {
 
     return new Promise(async(resolve, reject) => {
 
@@ -16,7 +16,7 @@ player.render = async(combination, audioData, context, destination) => {
             let offset = track.offset ? track.offset : 0;
             let volume = track.volume/100;
             
-            playComponents(track.components, context, offset, volume, audioData, destination);
+            playComponents(track.components, context, offset, volume, audioData, stereoMix);
         }
 
         let completedTracks = 0;
@@ -35,14 +35,14 @@ player.render = async(combination, audioData, context, destination) => {
 
 /* Plays components sequencially*/
 
-const playComponents = async(components, context, offset, volume, audioData, destination) => {
+const playComponents = async(components, context, offset, volume, audioData, stereoMix) => {
 
     await delay(offset);
 
     for (let component of components) {
 
         let audio = audioData.get(component.name);
-        await playComponent(audio, context, volume, component.repeat, destination);
+        await playComponent(audio, context, volume, component.repeat, stereoMix);
     }
 
     event.emit('trackFinished');
@@ -51,16 +51,16 @@ const playComponents = async(components, context, offset, volume, audioData, des
 
 /* Plays a single component */
 
-const playComponent = (audio, context, volume, repeat, destination) => {
+const playComponent = (audio, context, volume, repeat, stereoMix) => {
     return new Promise(async(resolve, reject) => {
         if (audio.type === 'buffer') {
 
-            await renderBuffer(audio.buffer, context, volume, repeat, destination);
+            await renderBuffer(audio.buffer, context, volume, repeat, stereoMix);
             resolve();
 
         } else if (audio.type === 'sequence') {
 
-            await renderNotes(audio.sequence, context, volume, repeat, destination);
+            await renderNotes(audio.sequence, context, volume, repeat, stereoMix);
             resolve();
 
         }
@@ -69,7 +69,7 @@ const playComponent = (audio, context, volume, repeat, destination) => {
 
 /* Renders a preset buffer component */
 
-const renderBuffer = (buffer, context, volume, repeat, destination) => {
+const renderBuffer = (buffer, context, volume, repeat, stereoMix) => {
 
     return new Promise((resolve, reject) => {
 
@@ -94,7 +94,8 @@ const renderBuffer = (buffer, context, volume, repeat, destination) => {
 
         // Send sound to audio output devices
 
-        amplifier.connect(destination);
+        amplifier.connect(stereoMix);
+        amplifier.connect(context.destination);
         play.start(context.currentTime);
         play.stop(context.currentTime + play.buffer.duration);
         
@@ -105,7 +106,7 @@ const renderBuffer = (buffer, context, volume, repeat, destination) => {
 
 /* Renders a clip sequence component */
 
-const renderNotes = (seq, context, volume, repeat, destination) => {
+const renderNotes = (seq, context, volume, repeat, stereoMix) => {
     return new Promise(async(resolve, reject) => {
 
         // Manage Repeat
@@ -118,7 +119,7 @@ const renderNotes = (seq, context, volume, repeat, destination) => {
         // Manage rendering for each individual note
 
         for (let freq of seq) {
-            await renderNote(freq, context, volume, destination);
+            await renderNote(freq, context, volume, stereoMix);
         }
         resolve();
     })
@@ -126,7 +127,7 @@ const renderNotes = (seq, context, volume, repeat, destination) => {
 
 /* Renders a single note from a clip sequence component */
 
-const renderNote = (freq, context, volume, destination) => {
+const renderNote = (freq, context, volume, stereoMix) => {
 
     return new Promise((resolve) => {
 
@@ -143,7 +144,8 @@ const renderNote = (freq, context, volume, destination) => {
 
         // Establish connection with audio output devices
 
-        amplifier.connect(destination);
+        amplifier.connect(stereoMix);
+        amplifier.connect(context.destination);
 
         // Oscillate at frequency of current note for 0.47 seconds
 

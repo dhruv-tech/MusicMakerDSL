@@ -126,15 +126,15 @@
                     <div class="container container-card">
                         <!-- This is just a sample card. The entire section needs to be added dynamically
                         with JS when we get output from the backend; -->
-                        <div class="card">
+                        <div v-for="recording in recordings" class="card">
                             <div class="card-body text-dark">
                                 <div class="row gx-0">
                                     <div class="col-12 gx-0 px-2">
-                                        <b>title of track?</b>
+                                        <b>{{ recording.name }}</b>
                                     </div>
                                 </div>
                                 <div class="row gx-0">
-                                    <audio controls v-bind:src="link">
+                                    <audio controls v-bind:src="recording.link">
                                         <p>Your browser does not support the<code>audio</code> element.</p>
                                     </audio>
                                 </div>

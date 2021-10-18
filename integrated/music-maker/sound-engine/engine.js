@@ -12,7 +12,7 @@ let recorder;
 engine.build = (specs) => {
 
     return new Promise(async(resolve, reject) => {
-
+        console.log(specs);
         // Validate
     
         for (let [spec, idx] of specs.entries()) {
@@ -31,6 +31,7 @@ engine.build = (specs) => {
 
         let audioData = new Map();
         for (let sound of sounds) {
+            console.log(sound);
             try {
                 let data = await soundBuilder.render(sound);
                 audioData.set(sound.name, data);
@@ -41,25 +42,57 @@ engine.build = (specs) => {
         }
 
         // Process Combination
-        let combination = specs.filter((block) => {
-            return block.type === 'Combination';
 
+        let combinations = specs.filter((block) => {
+            return block.type === 'Combination';
         });
 
+        // Process Play
 
+        let play = specs.filter((block) => {
+            return (Object.keys(block)[0] == 'play');
+        });
 
+        if (play.length > 1) {
+            reject("Only one play block is allowed");
+        }
 
-        if (combination.length > 1) {
-            reject({error: `Only one combination block is allowed`});
+        let toPlay = null;
+        let combinationNames = [];
+        console.log(combinations);
+        for (let combination of combinations) {
+
+            if (combinationNames.indexOf(combination.name) != -1) {
+
+                reject(`Not allowed: Multiple play blocks named ${combination.name}`);
+
+            } else if (combination.name == play[0].play) {
+                toPlay = combination;
+            }
+
+            combinationNames.push(combination.name);
+        }
+
+        if (toPlay == null) {
+
+            reject(`No combination block named ${play[0].play}`);
         }
 
         try {
+
             const context = new AudioContext();
-            const destination = context.createMediaStreamDestination();
-            recorder = new MediaRecorder(destination.stream);
+            const stereoMix = context.createMediaStreamDestination();
+            recorder = new MediaRecorder(stereoMix.stream);
             recorder.start();
-            await combinationPlayer.render(combination[0], audioData, context, destination);
-            let recording = await getRecording();
+
+            await combinationPlayer.render(toPlay, audioData, context, stereoMix);
+
+            let recordingLink = await getRecording();
+            let recording = {
+                name: toPlay.name,
+                link: recordingLink,
+                time: Date.now()
+            }
             resolve(recording);
         } catch (error) {
             reject(error);
@@ -70,7 +103,7 @@ engine.build = (specs) => {
 }
 
 const getRecording = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         recorder.addEventListener('dataavailable', async(e) => {
         
             let arrayBuffer = await e.data.arrayBuffer();
