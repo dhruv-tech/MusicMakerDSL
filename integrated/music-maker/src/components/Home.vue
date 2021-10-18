@@ -28,8 +28,7 @@
 <!--                             -->repeat          : 'Repeat:' NUM
 <!--                             -->usesound        : 'UseSound:' USESOUNDS '"'
 <!--                             -->combination     : 'Components:' TEXT track+ 'EndCombination'
-<!--                             -->track           : 'Track' maxlength? offset? volume? components* 'EndTrack'
-<!--                             -->maxlength       : 'MaxLength:' NUM
+<!--                             -->track           : 'Track' offset? volume? components* 'EndTrack'
 <!--                             -->offset          : 'Offset:' NUM
 <!--                             -->volume          : 'Volume:' NUM
 <!--                             -->components      : 'Components:' '[' component [','component]* ']'
