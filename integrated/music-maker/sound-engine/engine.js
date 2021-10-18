@@ -59,7 +59,7 @@ engine.build = (specs) => {
 
         let toPlay = null;
         let combinationNames = [];
-        console.log(combinations);
+        
         for (let combination of combinations) {
 
             if (combinationNames.indexOf(combination.name) != -1) {
@@ -82,7 +82,9 @@ engine.build = (specs) => {
 
             const context = new AudioContext();
             const stereoMix = context.createMediaStreamDestination();
-            recorder = new MediaRecorder(stereoMix.stream);
+            recorder = new MediaRecorder(stereoMix.stream, { audioBitsPerSecond : 75000 });
+            console.log(context);
+            console.log(recorder);
             recorder.start();
 
             await combinationPlayer.render(toPlay, audioData, context, stereoMix);
