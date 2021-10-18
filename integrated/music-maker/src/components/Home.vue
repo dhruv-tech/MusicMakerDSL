@@ -16,8 +16,8 @@
                         </div>
                         <div class="modal-body text-dark font-regular">
                             <p>
-                                The Music Maker is a Domain-Specific Language (DSL) that allows users with minimal or no background
-                                in Programming to quickly create basic musical tune with the following grammar rules:
+                                The Music Maker is a Domain-Specific Language (DSL) that allows programmers to quickly create basic
+                                musical tune with the following grammar rules:
                             </p>
                             <pre>
                                 <code>
@@ -87,12 +87,10 @@
 
 <!--                             -->Combination Draft1
 <!--                             -->    Track
-<!--                             -->        MaxLength: 50
 <!--                             -->        Volume: 10
 <!--                             -->        Components: [5*Kick1, 5*Melody1]
 <!--                             -->    EndTrack
 <!--                             -->    Track
-<!--                             -->        MaxLength: 35
 <!--                             -->        Offset: 10
 <!--                             -->        Volume: 5
 <!--                             -->        Components: [15*Kick1, 6*Melody1]
