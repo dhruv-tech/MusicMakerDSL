@@ -4,7 +4,7 @@
 
 import soundBuilder from "./sound.js";
 import combinationPlayer from "./combination.js";
-import Crunker from 'crunker';
+import toWav from 'audiobuffer-to-wav';
 const engine = {};
 
 let recorder;
@@ -82,7 +82,7 @@ engine.build = (specs) => {
 
             const context = new AudioContext();
             const stereoMix = context.createMediaStreamDestination();
-            recorder = new MediaRecorder(stereoMix.stream, { audioBitsPerSecond : 75000 });
+            recorder = new MediaRecorder(stereoMix.stream, { audioBitsPerSecond : 128000 });
             console.log(context);
             console.log(recorder);
             recorder.start();
@@ -112,11 +112,17 @@ const getRecording = () => {
             let recording_context = new AudioContext();
             let decodedAudio = await recording_context.decodeAudioData(arrayBuffer);
     
-            let crunker = new Crunker();
-            let res = crunker.export(decodedAudio);
+            //let crunker = new Crunker();
+            //let res = crunker.export(decodedAudio);
+
+            let wav = toWav(decodedAudio);
+            const blob = new window.Blob([ new DataView(wav) ], {
+                type: 'audio/wav'
+            });
+            let res = window.URL.createObjectURL(blob);
             recorder = null;
     
-            resolve(res.url);
+            resolve(res);
         });
     
         recorder.stop();
