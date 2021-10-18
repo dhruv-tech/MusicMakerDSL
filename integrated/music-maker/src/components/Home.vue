@@ -16,8 +16,8 @@
                         </div>
                         <div class="modal-body text-dark font-regular">
                             <p>
-                                The Music Make is a Domain-Specific Language (DSL) that allows users with minimal or no background
-                                in JavaScript to quickly create basic musical tune with the following grammar rules:
+                                The Music Maker is a Domain-Specific Language (DSL) that allows users with minimal or no background
+                                in Programming to quickly create basic musical tune with the following grammar rules:
                             </p>
                             <pre>
                                 <code>
